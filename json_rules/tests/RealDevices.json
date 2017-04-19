@@ -1,0 +1,58 @@
+{
+    "name": "RealDevices",
+    "subrules": [{
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/RealDevicesTestRoom\/0_0_0\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/RealDevicesTestRoom\/0_0_0\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/RealDevicesTestRoom\/0_0_0\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/RealDevicesTestRoom\/0_0_0\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }]
+}

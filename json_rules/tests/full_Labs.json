@@ -1,0 +1,1179 @@
+{
+    "name": "Labs",
+    "subrules": [{
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_1\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_1\/3\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/3\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_2\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_2\/3\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/3\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_3\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_3\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_4\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_4\/3\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/3\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_3\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_3\/3\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/3\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_4\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_4\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_4\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_5\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_5\/3\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/3\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_5\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_5\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_5\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_3\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_2\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_2\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_2\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_1\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }, {
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Lab\/0_3_1\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Lab\/0_3_1\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 50.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }]
+}

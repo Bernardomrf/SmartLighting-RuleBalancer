@@ -1,0 +1,922 @@
+{
+    "name": "CorridorsRule",
+    "subrules": [{
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_6\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_6\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_6\/4\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_6\/4\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_6\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_6\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_2\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_4\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_8\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_8\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_5\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_5\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_3\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_3\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_10\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_10\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_9\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_9\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_2\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_4\/6\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_4\/6\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_1\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_5\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_8\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_8\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_4\/5\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_4\/5\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_4\/4\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_4\/4\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_4\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_4\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_4\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_5\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_3\/4\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_3\/4\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_6\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_6\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_10\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_10\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_9\/5\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_9\/5\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_10\/3\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_10\/3\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_7\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_7\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_9\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_9\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_7\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_7\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_3\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_9\/4\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_9\/4\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_3\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_12\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_12\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_11\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_11\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Corredor\/0_13_9\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Corredor\/0_13_9\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }]
+}
