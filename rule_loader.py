@@ -4,6 +4,7 @@ import json
 import paho.mqtt.publish as publish
 import paho.mqtt.client as mqtt
 import itertools
+import re
 
 
 class RuleLoader:
@@ -65,4 +66,6 @@ class RuleLoader:
             publish.single("/SM/rule", payload=json.dumps(subrule), qos=0, retain=False,
                     hostname=host, port=1883, client_id="", keepalive=60,
                     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
+
 

@@ -68,21 +68,31 @@ def process_message(client, userdata, msg):
 
     elif "/SM/out_events/" in msg.topic:
 
-        #print("Topic: " + msg.topic)
+        print("Topic: " + msg.topic)
         for topic, regex in topics_list.items():
             if regex[0].match(msg.topic):
                 for dev in regex[1]:
                     publish.single(device_topics[dev], payload=msg.payload, qos=0, retain=False,
                                 hostname=""+gateways[dev][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-                    #print("Devices: " + gateways[dev][0])
+                    print("Devices: " + gateways[dev][0])
 
     elif "/SM/in_events/" in msg.topic:
-        for topic in loader.rule_gateway:
-            print(topic)
+        #for topic in loader.rule_gateway:
+            #print(topic)
         #regex = ure.compile(reg_topic)
-        publish.single(msg.topic, payload=msg.payload, qos=0, retain=False,
-                    hostname="gateway-pi.local", port=1883, client_id="", keepalive=60,
+        print (RuleLoader.rule_gateway)
+        for tpc in RuleLoader.rule_gateway:
+            regex = re.compile(tpc)
+
+
+            if re.match(regex, msg.topic):
+
+                for host in RuleLoader.rule_gateway[tpc]:
+
+                    print('publish')
+                    publish.single(msg.topic, payload=msg.payload, qos=0, retain=False,
+                    hostname=host, port=1883, client_id="", keepalive=60,
                     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
 subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice"], hostname="localhost")
