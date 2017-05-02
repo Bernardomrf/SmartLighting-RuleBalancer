@@ -20,7 +20,7 @@ class RuleLoader:
         print('Loading Rules')
 
         for filename in os.listdir(self.path):
-            print('filename')
+            #print(filename)
             if filename.endswith(".json"):
 
                 with open(self.path + filename) as data_file:
@@ -62,7 +62,6 @@ class RuleLoader:
                         else:
                             RuleLoader.rule_gateway[l] = [host]
 
-            print('quiiii')
             publish.single("/SM/rule", payload=json.dumps(subrule), qos=0, retain=False,
                     hostname=host, port=1883, client_id="", keepalive=60,
                     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
