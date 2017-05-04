@@ -10,7 +10,6 @@ import json
 import re
 import atexit
 
-
 topics_list = {} #All topics and their devices
 gateways = {} #Device - Gateway
 device_topics = {} #Device - Topic
@@ -27,7 +26,6 @@ def on_message(client, userdata, msg):
     executer.submit(process_message, client, userdata, msg)
 
 def process_message(client, userdata, msg):
-
     global topics_list
     global gateways
     global device_topics
@@ -35,21 +33,21 @@ def process_message(client, userdata, msg):
 
     if msg.topic == '/SM/devconfig':
         #print(msg.payload)
-        publish.single(msg.topic, payload=msg.payload, qos=0, retain=False,
+        publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
         hostname=confs.SCOT_BROKER, port=1883, client_id="", keepalive=60,
         will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     elif msg.topic == '/SM/regdevice':
 
         message = json.loads(msg.payload.decode("utf-8"))
-        print(message)
+        #print(message)
         if message['device'] in gateways:
             if message['gateway'] not in gateway_devices:
-                print('novo device nao existe')
+                #print('novo device nao existe')
                 gateway_devices[message['gateway']]=0
 
             if gateway_devices[gateways[message['device']][0]] > gateway_devices[message['gateway']]:
-                print('troca')
+                #print('troca')
                 gateway_devices[message['gateway']]+=1
                 gateway_devices[gateways[message['device']][0]]-=1
 
@@ -71,7 +69,7 @@ def process_message(client, userdata, msg):
                 gateways[message['device']].append(message['gateway'])
 
         else:
-            print ('else')
+            #print ('else')
             gateways[message['device']] = [message['gateway']]
             if message['gateway'] not in gateway_devices:
                 gateway_devices[message['gateway']]=0
@@ -89,6 +87,9 @@ def process_message(client, userdata, msg):
         device = msg.topic.replace("/SM/devices/", "")
 
         if "motion" in device:
+            '''if message['operation']['metaData']['operation'] == "add_publish_topic":
+                                                    test[device] = message['operation']['payloadData']['value'] + '/3302/all/5500/all'
+                                                    print(message['operation']['payloadData']['value'])'''
             return
 
 
@@ -137,7 +138,7 @@ def process_message(client, userdata, msg):
                 #print('publish2')
                 for host in RuleLoader.rule_gateway[tpc]:
 
-                    print('publish')
+                    #print('publish')
                     publish.single(msg.topic, payload=msg.payload, qos=0, retain=False,
                     hostname=host, port=1883, client_id="", keepalive=60,
                     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
@@ -149,6 +150,7 @@ def goodbye():
     print(gateways)
     print (gateway_devices)
     #print(device_topics)
+
 
 if __name__ == '__main__':
     main()

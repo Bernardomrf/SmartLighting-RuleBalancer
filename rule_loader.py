@@ -9,7 +9,7 @@ import re
 
 class RuleLoader:
 
-    gateways = ["gateway-pi.local","gateway-pi2.local"]
+    gateways = ["gateway-pi.local","gateway-pi2.local", "sonata9.local", "sonata10.local"]
     round_robin = itertools.cycle(gateways)
     rule_gateway = {}
 
