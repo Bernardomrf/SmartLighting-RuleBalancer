@@ -14,12 +14,17 @@ topics_list = {} #All topics and their devices
 gateways = {} #Device - Gateway
 device_topics = {} #Device - Topic
 gateway_devices = {} #Gateway - Num devices
+alive_gateways = {} #Gateways that are up
+gateways_rules = {} #gateways and number of rules
+
+
 loader = RuleLoader(confs.RULES_FOLDER)
 executer = ThreadPoolExecutor(max_workers=confs.WORKERS)
 test = {}
 def main():
-    loader.process_rules()
 
+    executer.submit(check_hb)
+    loader.process_rules()
     subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice"], hostname="localhost")
 
 def on_message(client, userdata, msg):
@@ -143,12 +148,36 @@ def process_message(client, userdata, msg):
                     hostname=host, port=1883, client_id="", keepalive=60,
                     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
+    elif "/SM/hb/" in msg.topic:
+        global alive_gateways
+
+        message = json.loads(msg.payload.decode("utf-8"))
+        alive_gateways[message['gateway']] = (time.time(),True)
+
+
+def check_hb():
+    gate_on = []
+    global alive_gateways
+    for gateway in alive_gateways:
+        if time.time() - alive_gateways[gateway] > 10:
+            alive_gateways[gateway][1] = False
+        else:
+            gate_on.append(gateway)
+    balance_gateways(gate_on)
+    time.sleep(10)
+
+def balance_gateways(gate_on):
+    if len(gate_on) != len(gateways_rules):
+
+        pass
+    pass
 
 @atexit.register
 def goodbye():
     #print(topics_list)
-    print(gateways)
-    print (gateway_devices)
+    print(RuleLoader.rule_gateway)
+    print(RuleLoader.rules)
+    print(gateway_devices)
     #print(device_topics)
 
 
