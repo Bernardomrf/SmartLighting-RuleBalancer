@@ -11,7 +11,7 @@ class RuleLoader:
 
     gateways = ['none']#["gateway-pi.local","gateway-pi2.local", "sonata9.local", "sonata10.local"]
     round_robin = itertools.cycle(gateways)
-    rule_gateway = {}
+    regex_id = {}
     rules = {}
 
     def __init__(self, path):
@@ -27,7 +27,7 @@ class RuleLoader:
                 with open(self.path + filename) as data_file:
                     RuleLoader.load_json(json.load(data_file))
         print('Done loading rules')
-        print(RuleLoader.rule_gateway)
+        print(RuleLoader.regex_id)
 
     def load_json(data):
         count = 0
@@ -38,41 +38,42 @@ class RuleLoader:
                 if action['function']['name'] == 'set_value':
                     for listener in action['function']['listen_data']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
-                        if l in RuleLoader.rule_gateway:
-                            if host in RuleLoader.rule_gateway[l][0]:
+                        if l in RuleLoader.regex_id:
+                            if r_id in RuleLoader.regex_id[l]:
                                 continue
-                            RuleLoader.rule_gateway[l].append((host,count))
+                            RuleLoader.regex_id[l].append(count)
                         else:
-                            RuleLoader.rule_gateway[l] = [(host,count)]
+                            RuleLoader.regex_id[l] = [count]
 
                 elif action['function']['name'] == 'setif_value_percent':
                     for listener in action['function']['listen_value']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
-                        if l in RuleLoader.rule_gateway:
-                            if host in RuleLoader.rule_gateway[l][0]:
+                        if l in RuleLoader.regex_id:
+                            if r_id in RuleLoader.regex_id[l]:
                                 continue
-                            RuleLoader.rule_gateway[l].append((host,count))
+                            RuleLoader.regex_id[l].append(count)
                         else:
-                            RuleLoader.rule_gateway[l] = [(host,count)]
+                            RuleLoader.regex_id[l] = [count]
 
                     for listener in action['function']['listen_boolean']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
-                        if l in RuleLoader.rule_gateway:
-                            if host in RuleLoader.rule_gateway[l][0]:
+                        if l in RuleLoader.regex_id:
+                            if r_id in RuleLoader.regex_id[l]:
                                 continue
-                            RuleLoader.rule_gateway[l].append((host,count))
+                            RuleLoader.regex_id[l].append(count)
                         else:
-                            RuleLoader.rule_gateway[l] = [(host,count)]
+                            RuleLoader.regex_id[l] = [count]
 
 
-            RuleLoader.rules[count] = (json.dumps(subrule), host)
-            rule = '{"ID" : "'+ str(count) +'", "rule":'+json.dumps(subrule)+'}'
+            RuleLoader.rules[count] = json.dumps(subrule)
+            count += 1
+            #rule = '{"ID" : "'+ str(count) +'", "rule":'+json.dumps(subrule)+'}'
 
             #publish.single("/SM/rule", payload=rule, qos=0, retain=False,
                     #hostname=host, port=1883, client_id="", keepalive=60,
                     #will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
-            count += 1
+
 
 
 

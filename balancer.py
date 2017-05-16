@@ -14,9 +14,9 @@ topics_list = {} #All topics and their devices
 gateways = {} #Device - Gateway
 device_topics = {} #Device - Topic
 gateway_devices = {} #Gateway - Num devices
-alive_gateways = {} #Gateways that are up
-gateways_rules = {} #gateways and number of rules
-
+gateway_timestamp = {} #Gateways that are up
+on_gateways = [] # Online gateways
+rule_id_gateway = {} #Rule id -> Gateway
 
 loader = RuleLoader(confs.RULES_FOLDER)
 executer = ThreadPoolExecutor(max_workers=confs.WORKERS)
@@ -58,10 +58,10 @@ def process_message(client, userdata, msg):
 
                 ##Warn gateways
                 try:
-                    publish.single("/SM/add_device", payload=message['device'], qos=0, retain=False,
+                    publish.single("/SM/add_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-                    publish.single("/SM/delete_device", payload=message['device'], qos=0, retain=False,
+                    publish.single("/SM/delete_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+gateways[message['device']][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
                 except Exception as e:
@@ -81,7 +81,7 @@ def process_message(client, userdata, msg):
             gateway_devices[message['gateway']]+=1
 
 
-            publish.single("/SM/add_device", payload=message['device'], qos=0, retain=False,
+            publish.single("/SM/add_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
@@ -122,7 +122,7 @@ def process_message(client, userdata, msg):
         for topic, regex in topics_list.items():
             if regex[0].match(msg.topic):
                 for dev in regex[1]:
-                    publish.single(device_topics[dev], payload=msg.payload, qos=0, retain=False,
+                    publish.single(device_topics[dev], payload=msg.payload, qos=1, retain=False,
                                 hostname=""+gateways[dev][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
                     #print("Devices: " + gateways[dev][0])
@@ -135,47 +135,93 @@ def process_message(client, userdata, msg):
         #regex = ure.compile(reg_topic)
         #print(test)
         #print (RuleLoader.rule_gateway)
-        for tpc in RuleLoader.rule_gateway:
+        for tpc in RuleLoader.regex_id:
             regex = re.compile(tpc)
 
             #print('publish1')
             if re.match(regex, msg.topic):
                 #print('publish2')
-                for host in RuleLoader.rule_gateway[tpc]:
+                for host in rule_id_gateway[RuleLoader.regex_id[tpc]]:
 
                     #print('publish')
-                    publish.single(msg.topic, payload=msg.payload, qos=0, retain=False,
+                    publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
                     hostname=host, port=1883, client_id="", keepalive=60,
                     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     elif "/SM/hb/" in msg.topic:
-        global alive_gateways
-
+        global gateway_timestamp
+        global on_gateways
         message = json.loads(msg.payload.decode("utf-8"))
-        alive_gateways[message['gateway']] = (time.time(),True)
+        gateway_timestamp[message['gateway']] = time.time()
+        if message['gateway'] not in on_gateways:
+            if [item for item in on_gateways if item[0] == gateway] == []:
+                on_gateways.insert(0, (message['gateway'],[]))
+                add_gateways()
 
 
 def check_hb():
-    gate_on = []
-    global alive_gateways
-    for gateway in alive_gateways:
-        if time.time() - alive_gateways[gateway] > 10:
-            alive_gateways[gateway][1] = False
-        else:
-            gate_on.append(gateway)
-    balance_gateways(gate_on)
-    time.sleep(10)
+    #gate_on = []
+    global on_gateways
+    while True:
+        for gateway in gateway_timestamp:
+            if time.time() - gateway_timestamp[gateway] > 10:
+                if [item for item in on_gateways if item[0] == gateway]:
+                    rules_list = [item[1] for item in on_gateways if item[0] == gateway]
+                    [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
 
-def balance_gateways(gate_on):
-    if len(gate_on) != len(gateways_rules):
+                    remove_gateways(rules_list)
+        time.sleep(10)
 
-        pass
-    pass
+def balance_gateways():
+    global on_gateways
+    on_gateways = sorted(on_gateways, key=lambda x: len(x[1]))
+
+def add_gateways():
+    global on_gateways
+    i = len(on_gateways)-1
+    if i>0:
+        while len(on_gateways[0][1]) != len(on_gateways[i][1]):
+
+            rule_id = on_gateways[i][1].pop()
+            on_gateways[0][1].append(rule_id)
+            report(rule_id, on_gateways[0][0], on_gateways[i][0])
+            i-=1
+            if i == 0:
+                i = len(on_gateways)-1
+
+        balance_gateways()
+    else:
+        on_gateways[0][1] = list(RuleLoader.rules.keys())
+        for rule in on_gateways[0][1]:
+            report(rule, add=on_gateways[0])
+
+def remove_gateways(rules_list):
+    global on_gateways
+    for i in range(len(rules_list)):
+        on_gateways[i%len(on_gateways)][1].append(rules_list[i])
+        report(rules_list[i], add=on_gateways[i%len(on_gateways)][0])
+
+def report(rule_id, add=None, remove=None):
+    global rule_id_gateway
+    if remove:
+
+        publish.single("/SM/remove_rule", payload=rule_id, qos=1, retain=False,
+                                hostname=remove, port=1883, client_id="", keepalive=60,
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
+    if add:
+        publish.single("/SM/add_rule", payload=rule_id, qos=1, retain=False,
+                                hostname=add, port=1883, client_id="", keepalive=60,
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+        rule_id_gateway[rule_id] = add
+
+
+
 
 @atexit.register
 def goodbye():
     #print(topics_list)
-    print(RuleLoader.rule_gateway)
+    #print(RuleLoader.rule_gateway)
     print(RuleLoader.rules)
     print(gateway_devices)
     #print(device_topics)
