@@ -25,7 +25,7 @@ def main():
 
     executer.submit(check_hb)
     loader.process_rules()
-    subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice"], hostname="localhost")
+    subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice", "/SM/hb/"], hostname="localhost")
 
 def on_message(client, userdata, msg):
     executer.submit(process_message, client, userdata, msg)
@@ -151,36 +151,44 @@ def process_message(client, userdata, msg):
     elif "/SM/hb/" in msg.topic:
         global gateway_timestamp
         global on_gateways
+
         message = json.loads(msg.payload.decode("utf-8"))
         gateway_timestamp[message['gateway']] = time.time()
         if message['gateway'] not in on_gateways:
-            if [item for item in on_gateways if item[0] == gateway] == []:
+            if [item for item in on_gateways if item[0] == message['gateway']] == []:
                 on_gateways.insert(0, (message['gateway'],[]))
+                print("Adding gateway")
                 add_gateways()
-
 
 def check_hb():
     #gate_on = []
     global on_gateways
+
     while True:
+        try:
+            for gtw in on_gateways:
+                print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
+        except Exception as e:
+            print (e)
+
         for gateway in gateway_timestamp:
             if time.time() - gateway_timestamp[gateway] > 10:
                 if [item for item in on_gateways if item[0] == gateway]:
                     rules_list = [item[1] for item in on_gateways if item[0] == gateway]
                     [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
-
-                    remove_gateways(rules_list)
+                    #print(on_gateways)
+                    remove_gateways(rules_list[0])
         time.sleep(10)
 
 def balance_gateways():
     global on_gateways
     on_gateways = sorted(on_gateways, key=lambda x: len(x[1]))
-
+    print(on_gateways)
 def add_gateways():
     global on_gateways
     i = len(on_gateways)-1
     if i>0:
-        while len(on_gateways[0][1]) != len(on_gateways[i][1]):
+        while len(on_gateways[0][1]) < len(on_gateways[i][1]):
 
             rule_id = on_gateways[i][1].pop()
             on_gateways[0][1].append(rule_id)
@@ -191,15 +199,23 @@ def add_gateways():
 
         balance_gateways()
     else:
-        on_gateways[0][1] = list(RuleLoader.rules.keys())
+        on_gateways[0] = (on_gateways[0][0], list(RuleLoader.rules.keys()))
         for rule in on_gateways[0][1]:
-            report(rule, add=on_gateways[0])
+            report(rule, add=on_gateways[0][0])
+
 
 def remove_gateways(rules_list):
+    print('removing')
     global on_gateways
-    for i in range(len(rules_list)):
-        on_gateways[i%len(on_gateways)][1].append(rules_list[i])
-        report(rules_list[i], add=on_gateways[i%len(on_gateways)][0])
+    try:
+        print(rules_list)
+        for i in range(len(rules_list)):
+            on_gateways[i%len(on_gateways)][1].append(rules_list[i])
+
+            report(rules_list[i], add=on_gateways[i%len(on_gateways)][0])
+    except Exception as e:
+        print(e)
+
 
 def report(rule_id, add=None, remove=None):
     global rule_id_gateway
@@ -210,6 +226,8 @@ def report(rule_id, add=None, remove=None):
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     if add:
+        #print(add)
+        #print(rule_id)
         publish.single("/SM/add_rule", payload=rule_id, qos=1, retain=False,
                                 hostname=add, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
@@ -222,8 +240,9 @@ def report(rule_id, add=None, remove=None):
 def goodbye():
     #print(topics_list)
     #print(RuleLoader.rule_gateway)
-    print(RuleLoader.rules)
-    print(gateway_devices)
+    print(list(RuleLoader.rules.keys()))
+    #print(gateway_devices)
+    print(rule_id_gateway)
     #print(device_topics)
 
 

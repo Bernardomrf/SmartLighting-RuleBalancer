@@ -39,7 +39,7 @@ class RuleLoader:
                     for listener in action['function']['listen_data']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
-                            if r_id in RuleLoader.regex_id[l]:
+                            if count in RuleLoader.regex_id[l]:
                                 continue
                             RuleLoader.regex_id[l].append(count)
                         else:
@@ -49,7 +49,7 @@ class RuleLoader:
                     for listener in action['function']['listen_value']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
-                            if r_id in RuleLoader.regex_id[l]:
+                            if count in RuleLoader.regex_id[l]:
                                 continue
                             RuleLoader.regex_id[l].append(count)
                         else:
@@ -58,7 +58,7 @@ class RuleLoader:
                     for listener in action['function']['listen_boolean']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
-                            if r_id in RuleLoader.regex_id[l]:
+                            if count in RuleLoader.regex_id[l]:
                                 continue
                             RuleLoader.regex_id[l].append(count)
                         else:
