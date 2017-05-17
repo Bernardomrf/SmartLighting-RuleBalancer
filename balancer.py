@@ -140,13 +140,16 @@ def process_message(client, userdata, msg):
 
             #print('publish1')
             if re.match(regex, msg.topic):
-                #print('publish2')
-                for host in rule_id_gateway[RuleLoader.regex_id[tpc]]:
+                #print(RuleLoader.regex_id[tpc])
+                #print(rule_id_gateway)
+                for r_id in RuleLoader.regex_id[tpc]:
+                    #print(rule_id_gateway)
+                    for host in rule_id_gateway[r_id]:
 
-                    #print('publish')
-                    publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
-                    hostname=host, port=1883, client_id="", keepalive=60,
-                    will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                        print(host)
+                        publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
+                        hostname=host, port=1883, client_id="", keepalive=60,
+                        will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     elif "/SM/hb/" in msg.topic:
         global gateway_timestamp
@@ -184,19 +187,18 @@ def balance_gateways():
     global on_gateways
     on_gateways = sorted(on_gateways, key=lambda x: len(x[1]))
     print(on_gateways)
+
 def add_gateways():
     global on_gateways
     i = len(on_gateways)-1
     if i>0:
         while len(on_gateways[0][1]) < len(on_gateways[i][1]):
-
             rule_id = on_gateways[i][1].pop()
             on_gateways[0][1].append(rule_id)
             report(rule_id, on_gateways[0][0], on_gateways[i][0])
             i-=1
             if i == 0:
                 i = len(on_gateways)-1
-
         balance_gateways()
     else:
         on_gateways[0] = (on_gateways[0][0], list(RuleLoader.rules.keys()))
@@ -221,28 +223,33 @@ def report(rule_id, add=None, remove=None):
     global rule_id_gateway
     if remove:
 
-        publish.single("/SM/remove_rule", payload=rule_id, qos=1, retain=False,
+        publish.single("/SM/remove_rule", payload=rule_id , qos=1, retain=False,
                                 hostname=remove, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     if add:
-        #print(add)
+        print(add)
         #print(rule_id)
-        publish.single("/SM/add_rule", payload=rule_id, qos=1, retain=False,
+
+        publish.single("/SM/add_rule", payload='{"id": "'+str(rule_id)+'", "rule": ' +RuleLoader.rules[rule_id]+'}', qos=1, retain=False,
                                 hostname=add, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-        rule_id_gateway[rule_id] = add
+        print('added')
+        if rule_id in rule_id_gateway:
 
-
+            rule_id_gateway[rule_id].append(add)
+        else:
+            rule_id_gateway[rule_id] = [add]
 
 
 @atexit.register
 def goodbye():
     #print(topics_list)
     #print(RuleLoader.rule_gateway)
-    print(list(RuleLoader.rules.keys()))
-    #print(gateway_devices)
-    print(rule_id_gateway)
+    #a = json.loads('{"id": "'+str(1)+'", "rule": ' +RuleLoader.rules[0]+'}')
+    #print(a['rule'])
+    print(gateway_devices)
+    #print(RuleLoader.rules)
     #print(device_topics)
 
 
