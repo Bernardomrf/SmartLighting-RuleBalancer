@@ -28,34 +28,32 @@ def main():
     subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice", "/SM/hb/"], hostname="localhost")
 
 def on_message(client, userdata, msg):
+
     executer.submit(process_message, client, userdata, msg)
 
 def process_message(client, userdata, msg):
+
     global topics_list
     global gateways
     global device_topics
     global gateway_devices
 
     if msg.topic == '/SM/devconfig':
-        #print(msg.payload)
         publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
         hostname=confs.SCOT_BROKER, port=1883, client_id="", keepalive=60,
         will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     elif msg.topic == '/SM/regdevice':
-
         message = json.loads(msg.payload.decode("utf-8"))
-        #print(message)
+
         if message['device'] in gateways:
+
             if message['gateway'] not in gateway_devices:
-                #print('novo device nao existe')
                 gateway_devices[message['gateway']]=0
 
             if gateway_devices[gateways[message['device']][0]] > gateway_devices[message['gateway']]:
-                #print('troca')
                 gateway_devices[message['gateway']]+=1
                 gateway_devices[gateways[message['device']][0]]-=1
-
                 ##Warn gateways
                 try:
                     publish.single("/SM/add_device", payload=message['device'], qos=1, retain=False,
@@ -66,88 +64,76 @@ def process_message(client, userdata, msg):
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
                 except Exception as e:
                     print(e)
-
-
                 #Insert gateway in the preferencial position
                 gateways[message['device']].insert(0,message['gateway'])
+
             else:
                 gateways[message['device']].append(message['gateway'])
 
         else:
-            #print ('else')
             gateways[message['device']] = [message['gateway']]
+
             if message['gateway'] not in gateway_devices:
                 gateway_devices[message['gateway']]=0
+
             gateway_devices[message['gateway']]+=1
-
-
             publish.single("/SM/add_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
 
     elif "/SM/devices/" in msg.topic:
-        #print (msg.topic)
+
         message = json.loads(msg.payload.decode("utf-8"))
         device = msg.topic.replace("/SM/devices/", "")
 
         if "motion" in device:
-            '''if message['operation']['metaData']['operation'] == "add_publish_topic":
-                                                    test[device] = message['operation']['payloadData']['value'] + '/3302/all/5500/all'
-                                                    print(message['operation']['payloadData']['value'])'''
             return
 
-
         if message['operation']['metaData']['operation'] == "add_publish_topic":
-
             topic = message['operation']['payloadData']['value'].replace("in_events","out_events")
             device_topics[device] = topic
-            #print(device_topics[device])
 
         elif message['operation']['metaData']['operation'] == "subscribe_topic":
-
             topics = message['operation']['payloadData']['value'].split(';')
+
             for topic in topics:
                 topic = topic.replace("/#","/.*")
+
                 if topic in topics_list:
                     if device in topics_list[topic][1]:
                         continue
+
                     topics_list[topic][1].append(device)
+
                 else:
                     topics_list[topic] = (re.compile(topic),[device])
 
     elif "/SM/out_events/" in msg.topic:
 
-        #print("Topic: " + msg.topic)
         for topic, regex in topics_list.items():
             if regex[0].match(msg.topic):
                 for dev in regex[1]:
                     publish.single(device_topics[dev], payload=msg.payload, qos=1, retain=False,
                                 hostname=""+gateways[dev][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-                    #print("Devices: " + gateways[dev][0])
 
     elif "/SM/in_events/" in msg.topic:
 
-        ### THIS WIL PUBLISH ON SCOT ONLY
-        #for topic in loader.rule_gateway:
-            #print(topic)
-        #regex = ure.compile(reg_topic)
-        #print(test)
-        #print (RuleLoader.rule_gateway)
+        ### THIS WIL PUBLISH ON SCOT ONLY LATER
+        send_gateways = []
         for tpc in RuleLoader.regex_id:
             regex = re.compile(tpc)
 
-            #print('publish1')
             if re.match(regex, msg.topic):
-                #print(RuleLoader.regex_id[tpc])
-                #print(rule_id_gateway)
                 for r_id in RuleLoader.regex_id[tpc]:
-                    #print(rule_id_gateway)
                     for host in rule_id_gateway[r_id]:
+                        send_gateways.append(host)
 
-                        print(host)
-                        publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
+        send_gateways = set(send_gateways)
+
+        for host in send_gateways:
+            publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
                         hostname=host, port=1883, client_id="", keepalive=60,
                         will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
@@ -157,6 +143,7 @@ def process_message(client, userdata, msg):
 
         message = json.loads(msg.payload.decode("utf-8"))
         gateway_timestamp[message['gateway']] = time.time()
+
         if message['gateway'] not in on_gateways:
             if [item for item in on_gateways if item[0] == message['gateway']] == []:
                 on_gateways.insert(0, (message['gateway'],[]))
@@ -164,8 +151,10 @@ def process_message(client, userdata, msg):
                 add_gateways()
 
 def check_hb():
-    #gate_on = []
+
     global on_gateways
+    global gateways
+    global gateway_devices
 
     while True:
         try:
@@ -179,17 +168,35 @@ def check_hb():
                 if [item for item in on_gateways if item[0] == gateway]:
                     rules_list = [item[1] for item in on_gateways if item[0] == gateway]
                     [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
-                    #print(on_gateways)
+
                     remove_gateways(rules_list[0])
+                    ### APAGAR GATEWAY do rule_id_gateway
+                    ## DELEGATE GATEWAY DDEVICES TO OTHER GATEWAYS
+                    for device in gateways:
+                        for i, gtws in enumerate(gateways[device]):
+                            ## FEIO FEIO FEIO#########################################
+                            if gtws + ".local" == gateway:
+                                del gateways[device][i]
+                                if i == 0:
+
+                                    publish.single("/SM/add_device", payload=device, qos=1, retain=False,
+                                            hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
+                                            will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                                    gateway_devices[gateways[device][0]]+=1
+                                    gateway_devices[gtws]-=1
+
         time.sleep(10)
 
 def balance_gateways():
+
     global on_gateways
+
     on_gateways = sorted(on_gateways, key=lambda x: len(x[1]))
-    print(on_gateways)
 
 def add_gateways():
+
     global on_gateways
+
     i = len(on_gateways)-1
     if i>0:
         while len(on_gateways[0][1]) < len(on_gateways[i][1]):
@@ -207,8 +214,9 @@ def add_gateways():
 
 
 def remove_gateways(rules_list):
-    print('removing')
+
     global on_gateways
+
     try:
         print(rules_list)
         for i in range(len(rules_list)):
@@ -220,23 +228,20 @@ def remove_gateways(rules_list):
 
 
 def report(rule_id, add=None, remove=None):
-    global rule_id_gateway
-    if remove:
 
+    global rule_id_gateway
+
+    if remove:
         publish.single("/SM/remove_rule", payload=rule_id , qos=1, retain=False,
                                 hostname=remove, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     if add:
-        print(add)
-        #print(rule_id)
-
         publish.single("/SM/add_rule", payload='{"id": "'+str(rule_id)+'", "rule": ' +RuleLoader.rules[rule_id]+'}', qos=1, retain=False,
                                 hostname=add, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-        print('added')
-        if rule_id in rule_id_gateway:
 
+        if rule_id in rule_id_gateway:
             rule_id_gateway[rule_id].append(add)
         else:
             rule_id_gateway[rule_id] = [add]
@@ -244,14 +249,8 @@ def report(rule_id, add=None, remove=None):
 
 @atexit.register
 def goodbye():
-    #print(topics_list)
-    #print(RuleLoader.rule_gateway)
-    #a = json.loads('{"id": "'+str(1)+'", "rule": ' +RuleLoader.rules[0]+'}')
-    #print(a['rule'])
-    print(gateway_devices)
-    #print(RuleLoader.rules)
-    #print(device_topics)
 
+    print(gateway_devices)
 
 if __name__ == '__main__':
     main()
