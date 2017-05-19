@@ -128,8 +128,8 @@ def process_message(client, userdata, msg):
 
             if re.match(regex, msg.topic):
                 for r_id in RuleLoader.regex_id[tpc]:
-                    for host in rule_id_gateway[r_id]:
-                        send_gateways.append(host)
+
+                    send_gateways.append(rule_id_gateway[r_id])
 
         send_gateways = set(send_gateways)
 
@@ -164,6 +164,7 @@ def check_hb():
     global gateway_devices
 
     while True:
+        print(rule_id_gateway)
         try:
             for gtw in on_gateways:
                 print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
@@ -242,16 +243,14 @@ def report(rule_id, add=None, remove=None):
         publish.single("/SM/remove_rule", payload=rule_id , qos=1, retain=False,
                                 hostname=remove, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+        rule_id_gateway[rule_id] = None
 
     if add:
         publish.single("/SM/add_rule", payload='{"id": "'+str(rule_id)+'", "rule": ' +RuleLoader.rules[rule_id]+'}', qos=1, retain=False,
                                 hostname=add, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
-        if rule_id in rule_id_gateway:
-            rule_id_gateway[rule_id].append(add)
-        else:
-            rule_id_gateway[rule_id] = [add]
+        rule_id_gateway[rule_id] = add
 
 
 @atexit.register
