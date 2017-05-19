@@ -68,6 +68,7 @@ def process_message(client, userdata, msg):
                 gateways[message['device']].insert(0,message['gateway'])
 
             else:
+
                 gateways[message['device']].append(message['gateway'])
 
         else:
@@ -148,6 +149,12 @@ def process_message(client, userdata, msg):
             if [item for item in on_gateways if item[0] == message['gateway']] == []:
                 on_gateways.insert(0, (message['gateway'],[]))
                 print("Adding gateway")
+
+                # REQUEST GATEWAY DEVICES
+                publish.single("/SM/send_devices", payload='', qos=1, retain=False,
+                                hostname=message['gateway'], port=1883, client_id="", keepalive=60,
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
                 add_gateways()
 
 def check_hb():
