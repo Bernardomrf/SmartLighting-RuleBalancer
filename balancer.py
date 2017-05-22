@@ -198,10 +198,28 @@ def check_hb():
 
         try:
 
-            params = ('{"rules": '+json.dumps(rule_id_gateway) + ', "gateways" : '+json.dumps(gateway_devices)+'}').encode('utf8')
-            print(params)
+            #params = ('{"rules": '+json.dumps(rule_id_gateway) + ', "gateways" : '+json.dumps(gateway_devices)+'}').encode('utf8')
+            #params = (json.dumps(rule_id_gateway)).encode('utf8')
+            #print(json.dumps(on_gateways))
+            params = '['
+            for i, gtw in enumerate(gateway_devices):
+                gate = gtw+'.local'
+                try:
+                    rules_list = [item[1] for item in on_gateways if item[0] == gate]
+                    num_rules = len(rules_list[0])
+                except Exception as e:
+                    num_rules = 0
 
-            req = urllib.request.Request('http://sonata4.aws.atnog.av.it.pt:8080/status', data=params,
+                if num_rules == 0 and gateway_devices[gtw] == 0:
+                    status ="<span class='label label-danger'>Down</span>"
+                else:
+                    status ="<span class='label label-success'>Up</span>"
+                if i != 0:
+                    params +=','
+                params += '{ "Gateway":"' +gtw+ '", "Number of Devices": '+str(gateway_devices[gtw])+', "State": "'+status+'", "Number of Rules": '+str(num_rules)+' }'
+            params +=']'
+            print(params)
+            req = urllib.request.Request('http://sonata4.aws.atnog.av.it.pt:8080/status', data=params.encode('utf8'),
                              headers={'content-type': 'application/json'})
             response = urllib.request.urlopen(req)
             print(response)
