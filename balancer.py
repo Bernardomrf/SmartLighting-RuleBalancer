@@ -4,6 +4,9 @@ import paho.mqtt.publish as publish
 import paho.mqtt.subscribe as subscribe
 from concurrent.futures import ThreadPoolExecutor
 from rule_loader import RuleLoader
+import urllib
+from urllib import request, parse
+
 import configs as confs
 import time
 import json
@@ -192,6 +195,18 @@ def check_hb():
                                             will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
                                     gateway_devices[gateways[device][0]]+=1
                                     gateway_devices[gtws]-=1
+
+        try:
+
+            params = ('{"rules": '+json.dumps(rule_id_gateway) + ', "gateways" : '+json.dumps(gateway_devices)+'}').encode('utf8')
+            print(params)
+
+            req = urllib.request.Request('http://sonata4.aws.atnog.av.it.pt:8080/status', data=params,
+                             headers={'content-type': 'application/json'})
+            response = urllib.request.urlopen(req)
+            print(response)
+        except Exception as e:
+            print(e)
 
         time.sleep(10)
 
