@@ -31,4 +31,4 @@ else:
     LOG_FILE = BASE_PATH + "/log/production.log"
 
 # Client app Config
-docker run --name dashboard-db -d -e POSTGRES_PASSWORD=password -e POSTGRES_USER=user -e POSTGRES_DB=balancer -p 5432:5433 postgres
+

@@ -1,12 +1,11 @@
 import json
-import yaml
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_user, current_user, logout_user, login_required
 
 from app import db
-from models.User import User
-from settings import DEVICE_FILE, HASS_VERSION_FILE, VERSION, CONFIG_FILE
+from models.user import User
+from models.gateway import Device, Rule, Gateway
 
 gui = Blueprint('gui', __name__, template_folder='templates')
 
@@ -74,7 +73,7 @@ def settings():
     return render_template('settings.html', pass_change=pass_change, success=success)
 
 
-@gui.route('/about')
+"""@gui.route('/about')
 @login_required
 def about():
     args = {}
@@ -102,7 +101,7 @@ def about():
     except:
         pass
     return render_template('about.html', **args)
-
+"""
 @gui.route('/register')
 @login_required
 def register():

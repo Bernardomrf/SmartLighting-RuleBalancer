@@ -1,0 +1,28 @@
+.plant-container {
+    position:relative;
+}
+
+.plant-image {
+    position:absolute;
+    z-index:20;
+}
+
+.plant-canvas {
+    position:absolute;
+    z-index:1;
+}
+
+.image-border {
+    outline: 1px solid black;
+}
+
+.modal-large {
+	width: 70%;
+}
+
+/*.modal-dialog{
+	overflow-y: initial;
+}
+.modal-body{
+	overflow-y: auto;
+}*/

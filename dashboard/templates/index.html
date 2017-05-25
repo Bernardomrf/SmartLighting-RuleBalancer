@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" href="/static/images/favicon.ico">
+        <title>Rule Balancer Dashboard</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/bootstrap/css/bootstrap-horizon.css" rel="stylesheet" >
+        <link href="/static/css/style.css" rel="stylesheet" >
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-id="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Rule Balancer</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- <ul class="nav navbar-nav"></ul> -->
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-9 pull-md-3 bd-content">
+                    <h2 id="table-head-options"><a class="anchorjs-link " href="#table-head-options" aria-label="Anchor link for: table head options" data-anchorjs-icon="" style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: inherit; font-family: anchorjs-icons; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Gateways Status</h2>
+                    <div data-example-id="">
+                        <table class="table" id="gtw_list">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="event" class="container plant-container center-block"></div>
+        <!--{% include 'modals.html' %}-->
+
+        <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/static/js/eventHandler.js"></script>
+    </body>
+</html>

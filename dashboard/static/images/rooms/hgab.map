@@ -1,0 +1,15 @@
+<img src="[hgab] (imported)" width="1112" height="721" border="0" usemap="#map" />
+
+<map name="map">
+<!-- #$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #$-:Please do not edit lines starting with "#$" -->
+<!-- #$VERSION:2.3 -->
+<!-- #$AUTHOR:Unknown   -->
+<area shape="rect" coords="218,289,363,433" target="light7"  nohref="nohref" />
+<area shape="rect" coords="745,289,890,434" target="light8"  nohref="nohref" />
+<area shape="rect" coords="7,19,79,70" target="motion"  nohref="nohref" />
+<area shape="rect" coords="221,445,367,503" target="lux"  nohref="nohref" />
+<area shape="rect" coords="742,217,903,282" target="lux"  nohref="nohref" />
+<area shape="rect" coords="1029,645,1112,701" target="motion"  nohref="nohref" />
+</map>

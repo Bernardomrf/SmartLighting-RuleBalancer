@@ -1,0 +1,3578 @@
+{
+    "name": "Gabinetes",
+    "subrules": [{
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_5\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_8\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_14\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_5\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_10\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_12\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_7\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_4\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_12\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_11\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_13\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_13\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_10\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_6\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_1\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_2\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_9\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_19\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_19\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_6\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_2\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_14\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_9\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_17\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_15\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_1\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_7\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_18\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_3\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_11\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_20\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_20\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_16\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_15\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_8\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_4\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_3\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_16\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_18\/1\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_17\/2\/all\/1501\/all\/15011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "multiple",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }, {
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 10,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_5\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_8\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_14\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_5\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_10\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_12\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_7\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_4\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_12\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_11\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_13\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_13\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_10\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_6\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_1\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_2\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_9\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_19\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_19\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_19\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_6\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_2\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_14\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_9\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_17\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_15\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_1\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_7\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_18\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_3\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_11\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_20\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_20\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_20\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_16\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_15\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_8\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_4\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_3\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_16\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_18\/1\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/1\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/1\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_17\/2\/all\/1501\/all\/15012\/all",
+                "value_type": "integer"
+            },
+            "function": {
+                "name": "setif_value_percent",
+                "listen_boolean": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/2\/+\/3302\/+\/5500\/+",
+                        "value_type": "int"
+                    }],
+                    "window": {
+                        "type": "time",
+                        "value": 5,
+                        "units": "seconds"
+                    },
+                    "aggregator": {
+                        "type": "any"
+                    }
+                },
+                "listen_value": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/2\/+\/3301\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "window": {
+                        "type": "length",
+                        "value": 10
+                    },
+                    "aggregator": {
+                        "type": "avg"
+                    },
+                    "converter": {
+                        "type": "lux_to_percentage",
+                        "max_lux": 40.0
+                    }
+                },
+                "percent_if_true": 100,
+                "percent_if_false": 25
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_5\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_5\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_8\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_8\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_14\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_14\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_10\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_10\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_12\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_12\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_7\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_7\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_4\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_4\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_11\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_11\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_13\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_13\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_6\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_6\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_1\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_1\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_2\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_2\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_9\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_9\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_19\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_19\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_17\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_17\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_15\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_15\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_18\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_18\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_3\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_3\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_20\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_20\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }, {
+        "actions": [{
+            "target": {
+                "type": "mqtt",
+                "topic": "\/out_events\/IT2\/Floor0\/Gabinete\/0_1_16\/a\/all\/1101\/all\/11011\/all",
+                "value_type": "int"
+            },
+            "function": {
+                "name": "set_value",
+                "listen_data": {
+                    "type": "single",
+                    "listeners": [{
+                        "type": "mqtt",
+                        "topic": "\/in_events\/IT2\/Floor0\/Gabinete\/0_1_16\/+\/+\/3303\/+\/5700\/+",
+                        "value_type": "float"
+                    }],
+                    "filters": {
+                        "op": "or",
+                        "in_filters": [{
+                            "type": "lt",
+                            "value": 21.0
+                        }, {
+                            "type": "gt",
+                            "value": 23.0
+                        }]
+                    }
+                }
+            }
+        }]
+    }]
+}

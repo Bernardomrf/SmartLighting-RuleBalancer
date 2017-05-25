@@ -1,0 +1,15 @@
+<img src="[vgab] (overwritten)" width="729" height="976" border="0" usemap="#map" />
+
+<map name="map">
+<!-- #$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #$-:Please do not edit lines starting with "#$" -->
+<!-- #$VERSION:2.3 -->
+<!-- #$AUTHOR:Unknown  -->
+<area shape="rect" coords="291,223,437,365" target="light6"  nohref="nohref" />
+<area shape="rect" coords="295,613,438,755" target="light7"  nohref="nohref" />
+<area shape="rect" coords="474,260,608,318" target="lux1"  nohref="nohref" />
+<area shape="rect" coords="138,653,271,708" target="lux2"  nohref="nohref" />
+<area shape="rect" coords="13,12,74,67" target="motion1"  nohref="nohref" />
+<area shape="rect" coords="656,903,725,961" target="motion2"  nohref="nohref" />
+</map>

@@ -3,4 +3,5 @@ flask_script==2.0.5
 flask-login==0.4.0
 flask_SQLAlchemy==2.2
 flask_migrate==2.0.3
+psycopg2==2.7.1
 bcrypt==3.1.3

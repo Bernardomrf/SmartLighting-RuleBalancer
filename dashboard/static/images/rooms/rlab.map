@@ -1,0 +1,20 @@
+<img src="[rlab] (imported)" width="1508" height="2640" border="0" usemap="#map" />
+
+<map name="map">
+<!-- #$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #$-:Please do not edit lines starting with "#$" -->
+<!-- #$VERSION:2.3 -->
+<!-- #$AUTHOR:Unknown -->
+<area shape="rect" coords="1317,49,1378,109" target="motion1"  nohref="nohref" />
+<area shape="rect" coords="880,327,1033,477" target="light1"  nohref="nohref" />
+<area shape="rect" coords="576,363,717,424" target="lux1"  nohref="nohref" />
+<area shape="rect" coords="226,1243,373,1396" target="light2"  nohref="nohref" />
+<area shape="rect" coords="551,1299,687,1352" target="lux2"  nohref="nohref" />
+<area shape="rect" coords="878,1245,1029,1391" target="light3"  nohref="nohref" />
+<area shape="rect" coords="1334,1284,1394,1347" target="motion2"  nohref="nohref" />
+<area shape="rect" coords="226,2162,373,2310" target="light4"  nohref="nohref" />
+<area shape="rect" coords="549,2216,681,2270" target="lux3"  nohref="nohref" />
+<area shape="rect" coords="880,2162,1027,2308" target="light5"  nohref="nohref" />
+<area shape="rect" coords="44,2551,114,2606" target="motion3"  nohref="nohref" />
+</map>

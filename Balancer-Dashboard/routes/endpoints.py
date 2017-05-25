@@ -5,15 +5,13 @@ from socket import *
 from flask import Blueprint, request, redirect
 
 from app import build_error_response
-from settings import CONSUME_OTC_URL, TIMEOUT, CLIENT_APP_HOST, CLIENT_APP_PORT, GW_CERTIFICATE, GW_KEY, HARDWARE_FILE, \
-    SOFTWARE_FILE, CA_CERTIFICATE
 
 endpoints = Blueprint('endpoints', __name__)
 
 
 @endpoints.route('/register', methods=['POST'])
 def register():
-    try:
+    """try:
         with open(HARDWARE_FILE, "r") as f:
             json_data = json.loads(f.read())
             hardware_id = json_data["hardware_id"]
@@ -40,6 +38,7 @@ def register():
 
     client_socket.sendto(response.text.encode('utf-8'), address)
 
-    return redirect("/")
+    return redirect("/")"""
+    return ""
 
 

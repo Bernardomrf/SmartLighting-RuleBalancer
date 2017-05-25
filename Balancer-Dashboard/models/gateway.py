@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy import Column, String, Boolean, Integer, DateTime, ForeignKey
 from app import db
 
 class Gateway(db.Model):
@@ -32,12 +32,13 @@ class Rule(db.Model):
     __tablename__ = 'rule'
 
     id = Column(Integer, primary_key=True)
+    r_id = Column(Integer, primary_key=True)
     gateway_id = Column(Integer, ForeignKey('gateway.id'))
     json_rule = Column(String)
 
 
     def __init__(self, r_id, gateway_id, json_rule):
-        self.id = r_id
+        self.r_id = r_id
         self.gateway_id = gateway_id
         self.json_rule = json_rule
 
@@ -45,6 +46,7 @@ class Rule(db.Model):
     def serialize(self):
         data = {
             "id": self.id,
+            "r_id": self.r_id,
             "gateway_id": self.gateway_id,
             "json_rule": self.json_rule,
         }

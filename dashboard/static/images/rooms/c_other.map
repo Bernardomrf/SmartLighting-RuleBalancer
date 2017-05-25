@@ -1,0 +1,16 @@
+<img src="[c_other] (exported)" width="1512" height="730" border="0" usemap="#map" />
+
+<map name="map">
+<!-- #$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #$-:Please do not edit lines starting with "#$" -->
+<!-- #$VERSION:2.3 -->
+<!-- #$AUTHOR:Unknown -->
+<area shape="rect" coords="9,7,92,98" target="motion1"  nohref="nohref" />
+<area shape="rect" coords="1432,653,1496,718" target="motion2"  nohref="nohref" />
+<area shape="rect" coords="408,332,552,396" target="lux1"  nohref="nohref" />
+<area shape="rect" coords="939,328,1082,392" target="lux2"  nohref="nohref" />
+<area shape="rect" coords="154,287,309,440" target="light1"  nohref="nohref" />
+<area shape="rect" coords="678,287,832,444" target="light2"  nohref="nohref" />
+<area shape="rect" coords="1202,286,1360,441" target="light3"  nohref="nohref" />
+</map>

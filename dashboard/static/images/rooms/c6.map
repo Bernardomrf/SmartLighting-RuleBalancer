@@ -1,0 +1,27 @@
+<img src="[c6] (overwritten)" width="6256" height="1976" border="0" usemap="#map" />
+
+<map name="map">
+<!-- #$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #$-:Please do not edit lines starting with "#$" -->
+<!-- #$VERSION:2.3 -->
+<!-- #$AUTHOR:Unknown -->
+<area shape="rect" coords="83,526,166,593" target="motion1"  nohref="nohref" />
+<area shape="rect" coords="388,483,547,632" target="light1"  nohref="nohref" />
+<area shape="rect" coords="796,519,872,587" target="motion2"  nohref="nohref" />
+<area shape="rect" coords="983,525,1123,589" target="lux1"  nohref="nohref" />
+<area shape="rect" coords="1433,479,1590,636" target="light2"  nohref="nohref" />
+<area shape="rect" coords="2487,474,2656,630" target="light3"  nohref="nohref" />
+<area shape="rect" coords="3536,479,3690,631" target="light4"  nohref="nohref" />
+<area shape="rect" coords="2889,532,2979,605" target="motion3"  nohref="nohref" />
+<area shape="rect" coords="3081,535,3230,601" target="lux2"  nohref="nohref" />
+<area shape="rect" coords="4451,220,4611,374" target="light5"  nohref="nohref" />
+<area shape="rect" coords="5242,223,5396,377" target="light6"  nohref="nohref" />
+<area shape="rect" coords="4912,264,5065,335" target="lux3"  nohref="nohref" />
+<area shape="rect" coords="4720,267,4792,327" target="motion3"  nohref="nohref" />
+<area shape="rect" coords="6028,219,6181,370" target="light7"  nohref="nohref" />
+<area shape="rect" coords="6025,874,6181,1033" target="light8"  nohref="nohref" />
+<area shape="rect" coords="6025,597,6172,656" target="lux4"  nohref="nohref" />
+<area shape="rect" coords="6059,510,6130,576" target="motion5"  nohref="nohref" />
+<area shape="rect" coords="6064,1313,6138,1376" target="motion6"  nohref="nohref" />
+</map>

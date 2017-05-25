@@ -34,7 +34,7 @@ def load_data():
     loaddata.populate()
 
 
-from models.User import User
+from models.user import User
 
 
 @login_manager.user_loader

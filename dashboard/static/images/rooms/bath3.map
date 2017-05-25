@@ -1,0 +1,32 @@
+<img src="[bath3] (overwritten)" width="1086" height="699" border="0" usemap="#map" />
+
+<map name="map">
+<!-- #$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #$-:Please do not edit lines starting with "#$" -->
+<!-- #$VERSION:2.3 -->
+<!-- #$AUTHOR:Unknown -->
+<area shape="rect" coords="90,67,188,158" target="light_b1"  nohref="nohref" />
+<area shape="rect" coords="95,306,189,377" target="light_b2"  nohref="nohref" />
+<area shape="rect" coords="96,535,185,620" target="light_b3"  nohref="nohref" />
+<area shape="rect" coords="366,571,452,646" target="light_b4"  nohref="nohref" />
+<area shape="rect" coords="629,565,726,645" target="light_b5"  nohref="nohref" />
+<area shape="rect" coords="895,538,991,615" target="light_b6"  nohref="nohref" />
+<area shape="rect" coords="908,304,990,385" target="light_b7"  nohref="nohref" />
+<area shape="rect" coords="902,73,984,148" target="light_b8"  nohref="nohref" />
+<area shape="rect" coords="297,246,361,307" target="motion1"  nohref="nohref" />
+<area shape="rect" coords="2,626,66,699" target="motion2"  nohref="nohref" />
+<area shape="rect" coords="292,628,357,689" target="motion3"  nohref="nohref" />
+<area shape="rect" coords="294,446,349,510" target="motion4"  nohref="nohref" />
+<area shape="rect" coords="730,632,793,694" target="motion5"  nohref="nohref" />
+<area shape="rect" coords="1010,629,1088,695" target="motion6"  nohref="nohref" />
+<area shape="rect" coords="725,253,794,317" target="motion7"  nohref="nohref" />
+<area shape="rect" coords="3,195,149,265" target="lux1"  nohref="nohref" />
+<area shape="rect" coords="350,466,486,521" target="lux2"  nohref="nohref" />
+<area shape="rect" coords="357,649,495,697" target="lux3"  nohref="nohref" />
+<area shape="rect" coords="558,645,690,698" target="lux4"  nohref="nohref" />
+<area shape="rect" coords="668,457,803,513" target="lux5"  nohref="nohref" />
+<area shape="rect" coords="941,183,1079,251" target="lux6"  nohref="nohref" />
+<area shape="rect" coords="363,370,451,445" target="light_b9"  nohref="nohref" />
+<area shape="rect" coords="632,372,716,450" target="light_b10"  nohref="nohref" />
+</map>
