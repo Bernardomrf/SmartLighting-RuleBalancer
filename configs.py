@@ -1,3 +1,3 @@
 RULES_FOLDER = "json_rules/"
-WORKERS = 4
+WORKERS = 8
 SCOT_BROKER = "sonata5.local"

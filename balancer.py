@@ -167,7 +167,7 @@ def check_hb():
     global gateway_devices
 
     while True:
-        print(rule_id_gateway)
+        #print(rule_id_gateway)
         try:
             for gtw in on_gateways:
                 print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
@@ -218,11 +218,11 @@ def check_hb():
                     params +=','
                 params += '{ "Gateway":"' +gtw+ '", "Number of Devices": '+str(gateway_devices[gtw])+', "State": "'+status+'", "Number of Rules": '+str(num_rules)+' }'
             params +=']'
-            print(params)
+            #print(params)
             req = urllib.request.Request('http://sonata4.aws.atnog.av.it.pt:8080/status', data=params.encode('utf8'),
                              headers={'content-type': 'application/json'})
             response = urllib.request.urlopen(req)
-            print(response)
+            #print(response)
         except Exception as e:
             print(e)
 

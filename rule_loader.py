@@ -9,10 +9,10 @@ import re
 
 class RuleLoader:
 
-    gateways = ['none']#["gateway-pi.local","gateway-pi2.local", "sonata9.local", "sonata10.local"]
-    round_robin = itertools.cycle(gateways)
+
     regex_id = {}
     rules = {}
+    count = 0
 
     def __init__(self, path):
         self.path = path
@@ -30,44 +30,44 @@ class RuleLoader:
         print(RuleLoader.regex_id)
 
     def load_json(data):
-        count = 0
+        global count
         for subrule in data['subrules']:
-            host = next(RuleLoader.round_robin)
+
             for action in subrule['actions']:
 
                 if action['function']['name'] == 'set_value':
                     for listener in action['function']['listen_data']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
-                            if count in RuleLoader.regex_id[l]:
+                            if RuleLoader.count in RuleLoader.regex_id[l]:
                                 continue
-                            RuleLoader.regex_id[l].append(count)
+                            RuleLoader.regex_id[l].append(RuleLoader.count)
                         else:
-                            RuleLoader.regex_id[l] = [count]
+                            RuleLoader.regex_id[l] = [RuleLoader.count]
 
                 elif action['function']['name'] == 'setif_value_percent':
                     for listener in action['function']['listen_value']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
-                            if count in RuleLoader.regex_id[l]:
+                            if RuleLoader.count in RuleLoader.regex_id[l]:
                                 continue
-                            RuleLoader.regex_id[l].append(count)
+                            RuleLoader.regex_id[l].append(RuleLoader.count)
                         else:
-                            RuleLoader.regex_id[l] = [count]
+                            RuleLoader.regex_id[l] = [RuleLoader.count]
 
                     for listener in action['function']['listen_boolean']['listeners']:
                         l = '/SM'+listener['topic'].replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
-                            if count in RuleLoader.regex_id[l]:
+                            if RuleLoader.count in RuleLoader.regex_id[l]:
                                 continue
-                            RuleLoader.regex_id[l].append(count)
+                            RuleLoader.regex_id[l].append(RuleLoader.count)
                         else:
-                            RuleLoader.regex_id[l] = [count]
+                            RuleLoader.regex_id[l] = [RuleLoader.count]
 
 
-            RuleLoader.rules[count] = json.dumps(subrule)
-            count += 1
-            #rule = '{"ID" : "'+ str(count) +'", "rule":'+json.dumps(subrule)+'}'
+            RuleLoader.rules[RuleLoader.count] = json.dumps(subrule)
+            RuleLoader.count += 1
+            #rule = '{"ID" : "'+ str(RuleLoader.count) +'", "rule":'+json.dumps(subrule)+'}'
 
             #publish.single("/SM/rule", payload=rule, qos=0, retain=False,
                     #hostname=host, port=1883, client_id="", keepalive=60,
