@@ -13,7 +13,7 @@ gui = Blueprint('gui', __name__, template_folder='templates')
 @gui.route('/')
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for('gui.settings'))
+        return redirect(url_for('gui.gateways'))
 
     return redirect(url_for('gui.login'))
 
@@ -28,7 +28,7 @@ def login():
     if user.verify_password(request.form['password']):
         login_user(user)
 
-        return redirect(url_for('gui.settings'))
+        return redirect(url_for('gui.gateways'))
 
     return 'Bad login'
 
@@ -72,6 +72,11 @@ def settings():
 
     return render_template('settings.html', pass_change=pass_change, success=success)
 
+@gui.route('/gateways')
+@login_required
+def gateways():
+    return render_template('gateways.html')
+
 
 """@gui.route('/about')
 @login_required
@@ -102,7 +107,3 @@ def about():
         pass
     return render_template('about.html', **args)
 """
-@gui.route('/register')
-@login_required
-def register():
-    return render_template('register.html')
