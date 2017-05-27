@@ -10,6 +10,6 @@ def populate():
         db.session.commit()
         print("Successfully inserted data!")
     except Exception as e:
-        print(e)
+        #print(e)
         print("Error inserting data, rolling back!")
         db.session.rollback()

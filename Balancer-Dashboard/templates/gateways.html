@@ -84,27 +84,24 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Hardware</th>
-                                        <th>Software</th>
-                                        <th>Online Status</th>
-                                        <th>Control</th>
+                                        <th>Hostname</th>
+                                        <th>Last HeartBeat</th>
+                                        <th>Satus</th>
+                                        <th>Details</th>
                                     </thead>
                                     <tbody>
 
                                         {% for item in gateways %}
                                             <tr>
                                                 <td>{{ item.id }}</td>
-                                                <td>{{ item.name }}</td>
-                                                <td>{{ item.hardware }}</td>
-                                                <td>{{ item.software }}</td>
-                                                {% if item.online %}
-                                                    <td><span class="label label-success">Online</span></td>
-                                                    <td><a href="{{ item.url }}" type="button" class="btn btn-primary">GO</a></td>
+                                                <td>{{ item.hostname }}</td>
+                                                <td>{{ item.last_heartbeat }}</td>
+                                                {% if item.status == 'UP' %}
+                                                    <td><span class="label label-success">{{ item.status }}</span></td>
                                                 {% else %}
-                                                    <td><span class="label label-danger">Offline</span></td>
-                                                    <td><a type="button" class="btn btn-primary disabled">GO</a></td>
+                                                    <td><span class="label label-danger">{{ item.status }}</span></td>
                                                 {% endif %}
+                                                <td>soon</td>
                                             </tr>
                                         {% endfor %}
 

@@ -61,4 +61,4 @@ from routes.endpoints import endpoints
 from routes.gui import gui
 
 app.register_blueprint(gui)
-app.register_blueprint(endpoints, url_prefix='/notify')
+app.register_blueprint(endpoints, url_prefix='/endpoints')

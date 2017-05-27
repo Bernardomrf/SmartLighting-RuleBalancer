@@ -31,4 +31,3 @@ else:
     LOG_FILE = BASE_PATH + "/log/production.log"
 
 # Client app Config
-

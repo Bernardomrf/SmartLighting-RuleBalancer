@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from rule_loader import RuleLoader
 import urllib
 from urllib import request, parse
+from datetime import datetime
 
 import configs as confs
 import time
@@ -172,10 +173,15 @@ def check_hb():
             for gtw in on_gateways:
                 print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
         except Exception as e:
-            print (e)
+                print (e)
 
         for gateway in gateway_timestamp:
+            data = {}
+            data['status'] = True
             if time.time() - gateway_timestamp[gateway] > 10:
+
+                data['status'] = False
+
                 if [item for item in on_gateways if item[0] == gateway]:
                     rules_list = [item[1] for item in on_gateways if item[0] == gateway]
                     [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
@@ -196,35 +202,10 @@ def check_hb():
                                     gateway_devices[gateways[device][0]]+=1
                                     gateway_devices[gtws]-=1
 
-        try:
-
-            #params = ('{"rules": '+json.dumps(rule_id_gateway) + ', "gateways" : '+json.dumps(gateway_devices)+'}').encode('utf8')
-            #params = (json.dumps(rule_id_gateway)).encode('utf8')
-            #print(json.dumps(on_gateways))
-            params = '['
-            for i, gtw in enumerate(gateway_devices):
-                gate = gtw+'.local'
-                try:
-                    rules_list = [item[1] for item in on_gateways if item[0] == gate]
-                    num_rules = len(rules_list[0])
-                except Exception as e:
-                    num_rules = 0
-
-                if num_rules == 0 and gateway_devices[gtw] == 0:
-                    status ="<span class='label label-danger'>Down</span>"
-                else:
-                    status ="<span class='label label-success'>Up</span>"
-                if i != 0:
-                    params +=','
-                params += '{ "Gateway":"' +gtw+ '", "Number of Devices": '+str(gateway_devices[gtw])+', "State": "'+status+'", "Number of Rules": '+str(num_rules)+' }'
-            params +=']'
-            #print(params)
-            req = urllib.request.Request('http://sonata4.aws.atnog.av.it.pt:8080/status', data=params.encode('utf8'),
-                             headers={'content-type': 'application/json'})
-            response = urllib.request.urlopen(req)
-            #print(response)
-        except Exception as e:
-            print(e)
+            data['hostname'] = re.sub('\.local$', '', gateway)
+            data['last_hb'] = str(datetime.fromtimestamp(gateway_timestamp[gateway]))
+            req =  request.Request(confs.ADD_GTW_URL, data=parse.urlencode(data).encode())
+            resp = request.urlopen(req)
 
         time.sleep(10)
 

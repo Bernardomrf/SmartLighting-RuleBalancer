@@ -1,44 +1,39 @@
 import requests
 import json
+from app import logger
 
 from socket import *
 from flask import Blueprint, request, redirect
-
-from app import build_error_response
+from models.gateway import Gateway, Device, Rule
+from app import build_response, build_error_response, db
 
 endpoints = Blueprint('endpoints', __name__)
 
-
-@endpoints.route('/register', methods=['POST'])
-def register():
-    """try:
-        with open(HARDWARE_FILE, "r") as f:
-            json_data = json.loads(f.read())
-            hardware_id = json_data["hardware_id"]
-
-    except:
-        return build_error_response(400, "Error opening hardware file")
-
+@endpoints.route('/gateway', methods=['POST'])
+def gateway():
     try:
-        with open(SOFTWARE_FILE, "r") as f:
-            json_data = json.loads(f.read())
-            software_id = json_data["software_id"]
+        if 'hostname' not in request.form or 'status' not in request.form or 'last_hb' not in request.form:
+            return build_error_response(400, "Missing post arguments")
 
-    except:
-        return build_error_response(400, "Error opening software file")
+        hostname = request.form['hostname']
+        last_hb = request.form['last_hb']
+        status = request.form['status']
 
-    data = dict(otc=request.form.get('otc'), hardware_id=hardware_id, software_id=software_id)
-    response = requests.post(CONSUME_OTC_URL, data=data, timeout=TIMEOUT, verify=CA_CERTIFICATE)
+        gateway = Gateway.query.filter_by(hostname=hostname).first()
+        if gateway is not None:
+            #UPDATE
+            gateway.status = status
+            gateway.last_heartbeat = last_hb
+            db.session.commit()
 
-    if response.status_code != 200:
-        return response.text, 400
+            return build_response(200, data=gateway.serialize)
 
-    client_socket = socket(AF_INET, SOCK_DGRAM)
-    address = (CLIENT_APP_HOST, CLIENT_APP_PORT)
+        gateway = Gateway(hostname=hostname, status=status, last_heartbeat=last_hb)
+        db.session.add(gateway)
+        db.session.commit()
+    except Exception as e:
 
-    client_socket.sendto(response.text.encode('utf-8'), address)
+        db.session.rollback()
+        return build_error_response(400, "ERROR", e)
 
-    return redirect("/")"""
-    return ""
-
-
+    return build_response(200, data=gateway.serialize)

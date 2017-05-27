@@ -1,9 +1,10 @@
 import json
+import logging
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_user, current_user, logout_user, login_required
-
-from app import db
+import requests
+from app import build_response, build_error_response, db
 from models.user import User
 from models.gateway import Device, Rule, Gateway
 
@@ -75,35 +76,18 @@ def settings():
 @gui.route('/gateways')
 @login_required
 def gateways():
-    return render_template('gateways.html')
+
+    gateways = get_gateways()
+    data = {"gateways": gateways}
+
+    return render_template('gateways.html', **data)
 
 
-"""@gui.route('/about')
-@login_required
-def about():
-    args = {}
-    try:
-        f = open(DEVICE_FILE, "r")
-        data = json.loads(f.read())
-        f.close()
+def get_gateways():
+    gateways = Gateway.query.order_by(Gateway.id).all()
+    data = []
+    for gateway in gateways:
 
-        f = open(HASS_VERSION_FILE, "r")
-        args["hass_version"] = f.read()
-        f.close()
+        data.append(gateway.serialize)
 
-        args["gw_id"] = data["random_id"]
-        args["gw_hw_id"] = data["hardware"]["random_id"]
-        args["gw_user_id"] = data["user"]
-
-        args["gw_gui_version"] = VERSION
-        args["gw_client_version"] = data["software"]["version"]
-
-        f = open(CONFIG_FILE, "r")
-        yaml_file = yaml.load(f.read())
-        f.close()
-        args["gw_plug_ins"] = yaml_file["components"]
-
-    except:
-        pass
-    return render_template('about.html', **args)
-"""
+    return data
