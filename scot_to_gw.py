@@ -10,5 +10,5 @@ def on_message(client, userdata, msg):
     hostname="localhost", port=1883, client_id="", keepalive=60,
     will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
-subscribe.callback(on_message, ["/SM/devices/#", "/SM/out_events/#"], hostname="sonata5.local")
+subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname="sonata5.local")
 

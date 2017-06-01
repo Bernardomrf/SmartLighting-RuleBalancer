@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 61f5fc34905d
+Revision ID: c877c2bd4e0d
 Revises: 
-Create Date: 2017-05-25 15:43:34.143815
+Create Date: 2017-05-29 11:16:01.114331
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '61f5fc34905d'
+revision = 'c877c2bd4e0d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,11 +48,12 @@ def upgrade():
     )
     op.create_table('rule',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('r_id', sa.Integer(), nullable=False),
+    sa.Column('r_id', sa.Integer(), nullable=True),
     sa.Column('gateway_id', sa.Integer(), nullable=True),
     sa.Column('json_rule', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['gateway_id'], ['gateway.id'], ),
-    sa.PrimaryKeyConstraint('id', 'r_id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('r_id')
     )
     # ### end Alembic commands ###
 

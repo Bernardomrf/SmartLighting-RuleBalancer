@@ -10,7 +10,6 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" href="/static/assets/fa/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS     -->
     <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,17 +24,19 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="/static/assets/css/demo.css" rel="stylesheet" />
 
+
     <!--     Fonts and icons     -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="/static/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
 </head>
 <body>
 
 <div class="wrapper">
     <div class="sidebar" data-color="azure" data-image="/static/assets/img/logotipo_IT.png">
 
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+        <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
         <div class="sidebar-wrapper">
@@ -45,15 +46,14 @@
                 </a>
             </div>
             <ul class="nav">
-
-                <li class="active">
+                <li>
                     <a href="/gateways">
                         <i class="pe-7s-network"></i>
                         <p>Gateway's List</p>
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="/rules">
                         <i class="pe-7s-note2"></i>
                         <p>Rules List</p>
@@ -82,7 +82,6 @@
             </ul>
         </div>
     </div>
-
     <div class="main-panel">
 
         <div class="content">
@@ -91,38 +90,35 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Gateways List</h4>
-                                <p class="category">Here is a list of your registered gateways.</p>
+                                <h4 class="title">Rules List</h4>
+                                <p class="category">Here is a list of loaded rules</p>
                             </div>
                             <div class="content table-responsive">
                             <!--<a class="btn btn-primary" id="refresh" aria-label="Skip to main navigation">
                               <i class="fa fa-refresh" aria-hidden="true"></i>
                             </a>-->
-                                <table class="table table-hover table-striped" id="mytable">
+                                <table class="table table-hover table-striped" style="table-layout:fixed" id="mytable">
+                                    <colgroup>
+                                       <col span="1" style="width: 5%;">
+                                       <col span="1" style="width: 15%;">
+                                       <col span="1" style="width: 50%;">
+                                       <col span="1" style="width: 30%;">
+                                    </colgroup>
                                     <thead>
                                         <th>ID</th>
                                         <th>Hostname</th>
-                                        <th>Last HeartBeat</th>
-                                        <th>Satus</th>
-                                        <th>Details</th>
-
+                                        <th>Target</th>
+                                        <th>JSON Rule</th>
                                     </thead>
                                     <tbody>
-
-                                        {% for item in gateways %}
+                                        {% for item in rules %}
                                             <tr>
-                                                <td>{{ item.id }}</td>
-                                                <td>{{ item.hostname }}</td>
-                                                <td>{{ item.last_heartbeat }}</td>
-                                                {% if item.status == 'UP' %}
-                                                    <td><span class="label label-success">{{ item.status }}</span></td>
-                                                {% else %}
-                                                    <td><span class="label label-danger">{{ item.status }}</span></td>
-                                                {% endif %}
-                                                <td>soon</td>
+                                                <td>{{ item.r_id }}</td>
+                                                <td>{{ item.gateway_id }}</td>
+                                                <td>{{ item.target }}</td>
+                                                <td><a data-toggle="modal" data-id="{{ item.json_rule }}" title="" class="open-ruleDialog btn btn-primary" href="#ruleDialog">Details</a></td>
                                             </tr>
                                         {% endfor %}
-
                                     </tbody>
                                 </table>
 
@@ -130,8 +126,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
+
 
         <footer class="footer">
             <div class="container-fluid">
@@ -145,7 +144,29 @@
     </div>
 </div>
 
+<div class="modal fade" id="ruleDialog" role="dialog">
+            <div class="modal-dialog">
 
+              <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">JSON Rule</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                        <span class="col-md-1"></span>
+                        <textarea  readonly class="col-md-10" type="text" rows="10" name="rule" id="rule" style="margin: 0 auto;"></textarea>
+                        <span class="col-md-1"></span>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 
     <!--   Core JS Files   -->
@@ -167,14 +188,11 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="/static/assets/js/light-bootstrap-dashboard.js"></script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="/static/assets/js/demo.js"></script>
-
-    <script>
+    <!--<script>
         $( "#refresh" ).click(function() {
 
             $.ajax({
-              url: "/gateways",
+              url: "/rules",
               type: "get",
               data: {},
               success: function(response) {
@@ -190,9 +208,17 @@
 
             setTimeout(function(){
                 location.reload();
-            }, 5000);
+            }, 10000);
 
         });
-    </script>
+    </script>-->
+    <script>
+        $(document).on("click", ".open-ruleDialog", function () {
+             var rule = $(this).data('id');
+             console.log(rule)
+             $(".modal-body #rule").val( JSON.stringify(rule) );
+        });
 
+
+    </script>
 </html>

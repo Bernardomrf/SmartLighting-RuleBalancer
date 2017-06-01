@@ -9,7 +9,7 @@ from models.user import User
 from models.gateway import Device, Rule, Gateway
 
 gui = Blueprint('gui', __name__, template_folder='templates')
-
+logger = logging.getLogger()
 
 @gui.route('/')
 def index():
@@ -73,21 +73,49 @@ def settings():
 
     return render_template('settings.html', pass_change=pass_change, success=success)
 
+
 @gui.route('/gateways')
 @login_required
 def gateways():
-
+    #logger.error("Gateway")
     gateways = get_gateways()
     data = {"gateways": gateways}
-
     return render_template('gateways.html', **data)
+
+@gui.route('/rules')
+@login_required
+def rules():
+    #logger.error("Rule")
+    rules = get_rules()
+    data = {"rules": rules}
+    return render_template('rules.html', **data)
+
+@gui.route('/devices')
+@login_required
+def devices():
+    #logger.error("Gateway")
+    devices = get_devices()
+    data = {"devices": devices}
+    return render_template('devices.html', **data)
 
 
 def get_gateways():
     gateways = Gateway.query.order_by(Gateway.id).all()
     data = []
     for gateway in gateways:
-
         data.append(gateway.serialize)
+    return data
 
+def get_rules():
+    rules = Rule.query.order_by(Rule.r_id).all()
+    data = []
+    for rule in rules:
+        data.append(rule.serialize)
+    return data
+
+def get_devices():
+    devices = Device.query.order_by(Device.name).all()
+    data = []
+    for device in devices:
+        data.append(device.serialize)
     return data

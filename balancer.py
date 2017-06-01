@@ -4,8 +4,7 @@ import paho.mqtt.publish as publish
 import paho.mqtt.subscribe as subscribe
 from concurrent.futures import ThreadPoolExecutor
 from rule_loader import RuleLoader
-import urllib
-from urllib import request, parse
+import requests
 from datetime import datetime
 
 import configs as confs
@@ -29,7 +28,7 @@ def main():
 
     executer.submit(check_hb)
     loader.process_rules()
-    subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice", "/SM/hb/"], hostname="localhost")
+    subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice", "/SM/hb/"], qos=1, hostname="localhost")
 
 def on_message(client, userdata, msg):
 
@@ -49,7 +48,7 @@ def process_message(client, userdata, msg):
 
     elif msg.topic == '/SM/regdevice':
         message = json.loads(msg.payload.decode("utf-8"))
-
+        data = {}
         if message['device'] in gateways:
 
             if message['gateway'] not in gateway_devices:
@@ -66,6 +65,11 @@ def process_message(client, userdata, msg):
                     publish.single("/SM/delete_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+gateways[message['device']][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
+                    data['gateway'] = message['gateway']
+                    data['name'] = message['device']
+                    req =  requests.post(confs.ADD_DEVICE_URL, data=data)
+
                 except Exception as e:
                     print(e)
                 #Insert gateway in the preferencial position
@@ -86,6 +90,10 @@ def process_message(client, userdata, msg):
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
+            data['gateway'] = message['gateway']
+            data['name'] = message['device']
+            req =  requests.post(confs.ADD_DEVICE_URL, data=data)
+
 
     elif "/SM/devices/" in msg.topic:
 
@@ -94,10 +102,13 @@ def process_message(client, userdata, msg):
 
         if "motion" in device:
             return
+        if "lux" in device:
+            return
 
         if message['operation']['metaData']['operation'] == "add_publish_topic":
             topic = message['operation']['payloadData']['value'].replace("in_events","out_events")
             device_topics[device] = topic
+            print(device)
 
         elif message['operation']['metaData']['operation'] == "subscribe_topic":
             topics = message['operation']['payloadData']['value'].split(';')
@@ -116,12 +127,19 @@ def process_message(client, userdata, msg):
 
     elif "/SM/out_events/" in msg.topic:
 
-        for topic, regex in topics_list.items():
+        publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
+            hostname="sonata5.local", port=1883, client_id="", keepalive=60,
+            will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
+
+        ##||||||||||DESCOMENTAR DPS|||||||||||
+        """for topic, regex in topics_list.items():
             if regex[0].match(msg.topic):
                 for dev in regex[1]:
                     publish.single(device_topics[dev], payload=msg.payload, qos=1, retain=False,
                                 hostname=""+gateways[dev][0]+".local", port=1883, client_id="", keepalive=60,
-                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)"""
+
 
     elif "/SM/in_events/" in msg.topic:
 
@@ -172,41 +190,41 @@ def check_hb():
         try:
             for gtw in on_gateways:
                 print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
+
+
+            for gateway in gateway_timestamp:
+                data = {}
+                data['status'] = True
+                if time.time() - gateway_timestamp[gateway] > 10:
+
+                    data['status'] = False
+
+                    if [item for item in on_gateways if item[0] == gateway]:
+                        rules_list = [item[1] for item in on_gateways if item[0] == gateway]
+                        [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
+
+                        remove_gateways(rules_list[0])
+                        ### APAGAR GATEWAY do rule_id_gateway
+                        ## DELEGATE GATEWAY DDEVICES TO OTHER GATEWAYS
+                        for device in gateways:
+                            for i, gtws in enumerate(gateways[device]):
+                                ## FEIO FEIO FEIO#########################################
+                                if gtws + ".local" == gateway:
+                                    del gateways[device][i]
+                                    if i == 0:
+
+                                        publish.single("/SM/add_device", payload=device, qos=1, retain=False,
+                                                hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
+                                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                                        gateway_devices[gateways[device][0]]+=1
+                                        gateway_devices[gtws]-=1
+
+                data['hostname'] = re.sub('\.local$', '', gateway)
+                data['last_hb'] = str(datetime.fromtimestamp(gateway_timestamp[gateway]))
+                req =  requests.post(confs.ADD_GTW_URL, data=data)
+
         except Exception as e:
                 print (e)
-
-        for gateway in gateway_timestamp:
-            data = {}
-            data['status'] = True
-            if time.time() - gateway_timestamp[gateway] > 10:
-
-                data['status'] = False
-
-                if [item for item in on_gateways if item[0] == gateway]:
-                    rules_list = [item[1] for item in on_gateways if item[0] == gateway]
-                    [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
-
-                    remove_gateways(rules_list[0])
-                    ### APAGAR GATEWAY do rule_id_gateway
-                    ## DELEGATE GATEWAY DDEVICES TO OTHER GATEWAYS
-                    for device in gateways:
-                        for i, gtws in enumerate(gateways[device]):
-                            ## FEIO FEIO FEIO#########################################
-                            if gtws + ".local" == gateway:
-                                del gateways[device][i]
-                                if i == 0:
-
-                                    publish.single("/SM/add_device", payload=device, qos=1, retain=False,
-                                            hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
-                                            will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-                                    gateway_devices[gateways[device][0]]+=1
-                                    gateway_devices[gtws]-=1
-
-            data['hostname'] = re.sub('\.local$', '', gateway)
-            data['last_hb'] = str(datetime.fromtimestamp(gateway_timestamp[gateway]))
-            req =  request.Request(confs.ADD_GTW_URL, data=parse.urlencode(data).encode())
-            resp = request.urlopen(req)
-
         time.sleep(10)
 
 def balance_gateways():
@@ -260,6 +278,11 @@ def report(rule_id, add=None, remove=None):
         rule_id_gateway[rule_id] = None
 
     if add:
+        data={}
+        data['hostname'] = re.sub('\.local$', '', add)
+        data['id'] = rule_id
+        req =  requests.post(confs.ADD_GTW_RULE_URL, data=data)
+
         publish.single("/SM/add_rule", payload='{"id": "'+str(rule_id)+'", "rule": ' +RuleLoader.rules[rule_id]+'}', qos=1, retain=False,
                                 hostname=add, port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)

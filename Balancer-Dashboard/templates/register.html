@@ -5,12 +5,11 @@
     <link rel="icon" type="image/png" href="/static/assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Balancer Dashboard</title>
+    <title>Light Bootstrap Dashboard by Creative Tim</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" href="/static/assets/fa/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS     -->
     <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,6 +24,7 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="/static/assets/css/demo.css" rel="stylesheet" />
 
+
     <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
@@ -33,7 +33,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-image="/static/assets/img/logotipo_IT.png">
+    <div class="sidebar" data-color="blue" data-image="/static/assets/img/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -41,29 +41,15 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/" class="simple-text">
-                    SmartLighting Balancer
+                    Smart Gateway
                 </a>
             </div>
             <ul class="nav">
 
                 <li class="active">
-                    <a href="/gateways">
-                        <i class="pe-7s-network"></i>
-                        <p>Gateway's List</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/rules">
+                    <a href="/dashboard">
                         <i class="pe-7s-note2"></i>
-                        <p>Rules List</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/devices">
-                        <i class="pe-7s-share"></i>
-                        <p>Devices List</p>
+                        <p>Gateway's List</p>
                     </a>
                 </li>
 
@@ -94,32 +80,31 @@
                                 <h4 class="title">Gateways List</h4>
                                 <p class="category">Here is a list of your registered gateways.</p>
                             </div>
-                            <div class="content table-responsive">
-                            <!--<a class="btn btn-primary" id="refresh" aria-label="Skip to main navigation">
-                              <i class="fa fa-refresh" aria-hidden="true"></i>
-                            </a>-->
-                                <table class="table table-hover table-striped" id="mytable">
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
                                     <thead>
                                         <th>ID</th>
-                                        <th>Hostname</th>
-                                        <th>Last HeartBeat</th>
-                                        <th>Satus</th>
-                                        <th>Details</th>
-
+                                        <th>Name</th>
+                                        <th>Hardware</th>
+                                        <th>Software</th>
+                                        <th>Online Status</th>
+                                        <th>Control</th>
                                     </thead>
                                     <tbody>
 
                                         {% for item in gateways %}
                                             <tr>
                                                 <td>{{ item.id }}</td>
-                                                <td>{{ item.hostname }}</td>
-                                                <td>{{ item.last_heartbeat }}</td>
-                                                {% if item.status == 'UP' %}
-                                                    <td><span class="label label-success">{{ item.status }}</span></td>
+                                                <td>{{ item.name }}</td>
+                                                <td>{{ item.hardware }}</td>
+                                                <td>{{ item.software }}</td>
+                                                {% if item.online %}
+                                                    <td><span class="label label-success">Online</span></td>
+                                                    <td><a href="{{ item.url }}" type="button" class="btn btn-primary">GO</a></td>
                                                 {% else %}
-                                                    <td><span class="label label-danger">{{ item.status }}</span></td>
+                                                    <td><span class="label label-danger">Offline</span></td>
+                                                    <td><a type="button" class="btn btn-primary disabled">GO</a></td>
                                                 {% endif %}
-                                                <td>soon</td>
                                             </tr>
                                         {% endfor %}
 
@@ -136,7 +121,7 @@
         <footer class="footer">
             <div class="container-fluid">
                 <p class="copyright pull-right">
-                    &copy; 2017 SmartLighting. All Rights Reserved. Created by Bernardo Ferreira
+                    &copy; 2017 Smart Gateway. All Rights Reserved. Created by Bruno Silva
                 </p>
             </div>
         </footer>
@@ -170,29 +155,5 @@
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="/static/assets/js/demo.js"></script>
 
-    <script>
-        $( "#refresh" ).click(function() {
-
-            $.ajax({
-              url: "/gateways",
-              type: "get",
-              data: {},
-              success: function(response) {
-                console.log(response)
-                location.reload();
-              },
-              error: function(xhr) {
-                //Do Something to handle error
-              }
-            });
-        });
-        $(document).ready(function() {
-
-            setTimeout(function(){
-                location.reload();
-            }, 5000);
-
-        });
-    </script>
 
 </html>

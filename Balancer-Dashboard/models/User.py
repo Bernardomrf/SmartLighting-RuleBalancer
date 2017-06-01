@@ -1,4 +1,6 @@
 import bcrypt
+import base64
+import hashlib
 
 from sqlalchemy import Column, String, Boolean
 from app import db
@@ -20,7 +22,7 @@ class User(db.Model):
     def __init__(self, username, password):
         self.username = username
         self.pw_salt = bcrypt.gensalt()
-        self.password = bcrypt.hashpw(password.encode('utf-8'), self.pw_salt)
+        self.password = bcrypt.hashpw(base64.b64encode(hashlib.sha256(password.encode()).digest()), self.pw_salt)
 
     @property
     def is_active(self):
@@ -38,8 +40,9 @@ class User(db.Model):
         return str(self.id)
 
     def verify_password(self, password):
-        #pwhash = bcrypt.hashpw(password.encode('utf-8'), self.pw_salt)
-        return True#self.password == pwhash
+        #pwhash = bcrypt.hashpw(base64.b64encode(hashlib.sha256(password.encode()).digest()), self.pw_salt)
+        return True #self.password == pwhash
+        #base64.b64encode(hashlib.sha256(password).digest())***************
 
     def update_password(self, password):
         self.pw_salt = bcrypt.gensalt()
