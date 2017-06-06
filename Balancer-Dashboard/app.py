@@ -16,6 +16,7 @@ handler = logging.FileHandler(app.config["LOG_FILE"])
 logger.addHandler(handler)
 app.logger.addHandler(handler)
 
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "gui.login"

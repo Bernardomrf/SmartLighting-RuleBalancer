@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, Boolean, Integer, DateTime, ForeignKey
 from app import db
+import json
 
 class Gateway(db.Model):
     __tablename__ = 'gateway'
@@ -32,7 +33,7 @@ class Rule(db.Model):
     __tablename__ = 'rule'
 
     id = Column(Integer, primary_key=True)
-    r_id = Column(Integer, primary_key=True)
+    r_id = Column(Integer, unique=True)
     gateway_id = Column(Integer, ForeignKey('gateway.id'))
     json_rule = Column(String)
 
@@ -44,10 +45,13 @@ class Rule(db.Model):
 
     @property
     def serialize(self):
+        gateway = Gateway.query.filter_by(id=self.gateway_id).first()
+        json_r = json.loads(self.json_rule)
         data = {
             "id": self.id,
             "r_id": self.r_id,
-            "gateway_id": self.gateway_id,
+            "gateway_id": gateway.hostname if gateway else "None",
+            "target" : str(json_r['actions'][0]['target']['topic']),
             "json_rule": self.json_rule,
         }
         return data
@@ -68,10 +72,16 @@ class Device(db.Model):
 
     @property
     def serialize(self):
+        gateway = Gateway.query.filter_by(id=self.gateway_id).first()
         data = {
             "id": self.id,
             "name": self.name,
-            "gateway_id": self.gateway_id,
+            "gateway_id": gateway.hostname if gateway else "None",
+            "type" : "fa fa-lightbulb-o fa-2x" if "light" in self.name else \
+                    "fa fa-thermometer-three-quarters fa-2x" if "tmp" in self.name else \
+                    "fa fa-tint fa-2x" if "hum" in self.name else \
+                    "fa fa-exchange fa-2x" if "motion" in self.name else \
+                    "fa fa-sun-o fa-2x"
         }
         return data
 

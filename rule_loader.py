@@ -5,6 +5,8 @@ import paho.mqtt.publish as publish
 import paho.mqtt.client as mqtt
 import itertools
 import re
+import requests
+import configs as confs
 
 
 class RuleLoader:
@@ -32,7 +34,7 @@ class RuleLoader:
     def load_json(data):
         global count
         for subrule in data['subrules']:
-
+            data={}
             for action in subrule['actions']:
 
                 if action['function']['name'] == 'set_value':
@@ -64,14 +66,20 @@ class RuleLoader:
                         else:
                             RuleLoader.regex_id[l] = [RuleLoader.count]
 
-
-            RuleLoader.rules[RuleLoader.count] = json.dumps(subrule)
             RuleLoader.count += 1
-            #rule = '{"ID" : "'+ str(RuleLoader.count) +'", "rule":'+json.dumps(subrule)+'}'
+            RuleLoader.rules[RuleLoader.count] = json.dumps(subrule)
+            try:
+                data['id'] = RuleLoader.count
+                data['rule'] = json.dumps(subrule)
+                req =  requests.post(confs.ADD_RULE_URL, data=data)
 
-            #publish.single("/SM/rule", payload=rule, qos=0, retain=False,
-                    #hostname=host, port=1883, client_id="", keepalive=60,
-                    #will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+            except Exception as e:
+                print(e)
+
+
+
+
+
 
 
 
