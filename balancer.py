@@ -27,8 +27,10 @@ test = {}
 def main():
 
     executer.submit(check_hb)
+    executer.submit(scotListener)
     loader.process_rules()
-    subscribe.callback(on_message, ["/SM/in_events/#", "/SM/out_events/#", "/SM/devconfig", "/SM/devices/#", "/SM/regdevice", "/SM/hb/"], qos=1, hostname="localhost")
+    subscribe.callback(on_message, ["/SM/out_events/#", "/SM/devconfig", "/SM/regdevice", "/SM/hb/"], qos=1, hostname="localhost", client_id="localBroker")
+
 
 def on_message(client, userdata, msg):
 
@@ -171,13 +173,19 @@ def process_message(client, userdata, msg):
             if [item for item in on_gateways if item[0] == message['gateway']] == []:
                 on_gateways.insert(0, (message['gateway'],[]))
                 print("Adding gateway")
-
-                # REQUEST GATEWAY DEVICES
-                publish.single("/SM/send_devices", payload='', qos=1, retain=False,
+                try:
+                    print(message['gateway'])
+                    publish.single("/SM/send_devices", payload='', qos=1, retain=False,
                                 hostname=message['gateway'], port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
-                add_gateways()
+                    add_gateways()
+                except Exception as e:
+                    print(e)
+                # REQUEST GATEWAY DEVICES
+
+def scotListener():
+    subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname=confs.SCOT_BROKER, client_id="scotBroker")
 
 def check_hb():
 
@@ -188,9 +196,9 @@ def check_hb():
     while True:
         #print(rule_id_gateway)
         try:
-            for gtw in on_gateways:
-                print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
-
+            #for gtw in on_gateways:
+             #   print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
+            print(on_gateways)
 
             for gateway in gateway_timestamp:
                 data = {}

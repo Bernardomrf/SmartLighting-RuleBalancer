@@ -35,6 +35,7 @@ class RuleLoader:
         global count
         for subrule in data['subrules']:
             data={}
+            RuleLoader.count += 1
             for action in subrule['actions']:
 
                 if action['function']['name'] == 'set_value':
@@ -66,7 +67,7 @@ class RuleLoader:
                         else:
                             RuleLoader.regex_id[l] = [RuleLoader.count]
 
-            RuleLoader.count += 1
+
             RuleLoader.rules[RuleLoader.count] = json.dumps(subrule)
             try:
                 data['id'] = RuleLoader.count
