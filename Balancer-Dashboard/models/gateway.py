@@ -17,11 +17,15 @@ class Gateway(db.Model):
 
     @property
     def serialize(self):
+        rules = Rule.query.filter_by(gateway_id=self.id).count()
+        devices = Device.query.filter_by(gateway_id=self.id).count()
         data = {
             "id": self.id,
             "hostname": self.hostname,
             "status": "UP" if self.status else "DOWN",
             "last_heartbeat": self.last_heartbeat.strftime('%d-%m-%Y %H:%M'),
+            "devices": devices,
+            "rules" : rules,
         }
         return data
 

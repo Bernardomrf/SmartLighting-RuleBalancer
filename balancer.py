@@ -21,6 +21,8 @@ gateway_timestamp = {} #Gateways that are up
 on_gateways = [] # Online gateways
 rule_id_gateway = {} #Rule id -> Gateway
 
+toggles=[]
+
 loader = RuleLoader(confs.RULES_FOLDER)
 executer = ThreadPoolExecutor(max_workers=confs.WORKERS)
 test = {}
@@ -28,8 +30,9 @@ def main():
 
     executer.submit(check_hb)
     executer.submit(scotListener)
+    executer.submit(sendToggles)
     loader.process_rules()
-    subscribe.callback(on_message, ["/SM/out_events/#", "/SM/devconfig", "/SM/regdevice", "/SM/hb/"], qos=1, hostname="localhost", client_id="localBroker")
+    subscribe.callback(on_message, ["/SM/out_events/#", "/SM/devconfig", "/SM/regdevice", "/SM/hb/", "/signalOn", "/signalOff"], qos=1, hostname="localhost", client_id="localBroker")
 
 
 def on_message(client, userdata, msg):
@@ -42,6 +45,7 @@ def process_message(client, userdata, msg):
     global gateways
     global device_topics
     global gateway_devices
+    global toggles
 
     if msg.topic == '/SM/devconfig':
         publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
@@ -110,7 +114,7 @@ def process_message(client, userdata, msg):
         if message['operation']['metaData']['operation'] == "add_publish_topic":
             topic = message['operation']['payloadData']['value'].replace("in_events","out_events")
             device_topics[device] = topic
-            print(device)
+            #print(device)
 
         elif message['operation']['metaData']['operation'] == "subscribe_topic":
             topics = message['operation']['payloadData']['value'].split(';')
@@ -170,6 +174,7 @@ def process_message(client, userdata, msg):
         gateway_timestamp[message['gateway']] = time.time()
 
         if message['gateway'] not in on_gateways:
+
             if [item for item in on_gateways if item[0] == message['gateway']] == []:
                 on_gateways.insert(0, (message['gateway'],[]))
                 print("Adding gateway")
@@ -180,9 +185,23 @@ def process_message(client, userdata, msg):
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
                     add_gateways()
+                    # SEND REFRESH PAGE
+                    publish.single("/refresh", payload="1", qos=1, retain=False,
+                        hostname="localhost", port=1883, client_id="", keepalive=60,
+                        will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
                 except Exception as e:
                     print(e)
+
                 # REQUEST GATEWAY DEVICES
+
+    elif msg.topic == '/signalOn':
+        print(msg.payload.decode("utf-8") + ' : ON')
+        toggles.remove(msg.payload.decode("utf-8"))
+
+    elif msg.topic == '/signalOff':
+        print(msg.payload.decode("utf-8") + ' : OFF')
+        toggles.append(msg.payload.decode("utf-8"))
+
 
 def scotListener():
     subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname=confs.SCOT_BROKER, client_id="scotBroker")
@@ -198,8 +217,8 @@ def check_hb():
         try:
             #for gtw in on_gateways:
              #   print('gtw '+str(gtw[0])+ " : "+ str(len(gtw[1])))
-            print(on_gateways)
-
+            #print(on_gateways)
+            refresh = False
             for gateway in gateway_timestamp:
                 data = {}
                 data['status'] = True
@@ -226,13 +245,29 @@ def check_hb():
                                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
                                         gateway_devices[gateways[device][0]]+=1
                                         gateway_devices[gtws]-=1
+                        refresh=True
 
                 data['hostname'] = re.sub('\.local$', '', gateway)
                 data['last_hb'] = str(datetime.fromtimestamp(gateway_timestamp[gateway]))
+                for gtw in on_gateways:
+
+                    if gtw[0] == gateway:
+
+                        data['rules'] = str(len(gtw[1]))
+                data['devices'] = gateway_devices[data['hostname']]
+
                 req =  requests.post(confs.ADD_GTW_URL, data=data)
+
 
         except Exception as e:
                 print (e)
+
+        if refresh:
+                    # SEND REFRESH PAGE
+            publish.single("/refresh", payload="2", qos=1, retain=False,
+                        hostname="localhost", port=1883, client_id="", keepalive=60,
+                        will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
         time.sleep(10)
 
 def balance_gateways():
@@ -266,7 +301,7 @@ def remove_gateways(rules_list):
     global on_gateways
 
     try:
-        print(rules_list)
+        #print(rules_list)
         for i in range(len(rules_list)):
             on_gateways[i%len(on_gateways)][1].append(rules_list[i])
 
@@ -297,6 +332,19 @@ def report(rule_id, add=None, remove=None):
 
         rule_id_gateway[rule_id] = add
 
+def sendToggles():
+    while True:
+        global toggles
+        #print(toggles)
+        try:
+            for item in toggles:
+                publish.single("/heart_beat", payload="", qos=1, retain=False,
+                hostname=str(item+".local"), port=1883, client_id="", keepalive=60,
+                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+        except Exception as e:
+            raise e
+
+        time.sleep(5)
 
 @atexit.register
 def goodbye():

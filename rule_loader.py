@@ -29,7 +29,6 @@ class RuleLoader:
                 with open(self.path + filename) as data_file:
                     RuleLoader.load_json(json.load(data_file))
         print('Done loading rules')
-        print(RuleLoader.regex_id)
 
     def load_json(data):
         global count

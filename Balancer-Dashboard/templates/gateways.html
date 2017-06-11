@@ -29,6 +29,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="/static/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+
+
 </head>
 <body>
 
@@ -90,9 +93,24 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
-                                <h4 class="title">Gateways List</h4>
-                                <p class="category">Here is a list of your registered gateways.</p>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="header">
+                                        <h4 class="title">Gateways List</h4>
+                                        <p class="category">Here is a list of your registered gateways.</p>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-2">
+                                <div class="header">
+
+                                    <button class="btn btn-default btn-sm active" onClick="window.location.reload()">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </button>
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="content table-responsive">
                             <!--<a class="btn btn-primary" id="refresh" aria-label="Skip to main navigation">
@@ -103,6 +121,7 @@
                                         <th>ID</th>
                                         <th>Hostname</th>
                                         <th>Last HeartBeat</th>
+                                        <th>No. Rules</th>
                                         <th>Satus</th>
                                         <th>Details</th>
 
@@ -114,12 +133,21 @@
                                                 <td>{{ item.id }}</td>
                                                 <td>{{ item.hostname }}</td>
                                                 <td>{{ item.last_heartbeat }}</td>
+                                                <td>{{ item.rules }}</td>
                                                 {% if item.status == 'UP' %}
                                                     <td><span class="label label-success">{{ item.status }}</span></td>
+                                                    <td>
+                                                    <button id="{{ item.hostname }}on" type="button" class="btn btn-default btn-sm disabled" onclick="buttonOnClick('{{ item.hostname }}')" >ON</button>
+                                                    <button id="{{ item.hostname }}off" type="button" class="btn btn-default btn-sm active" onclick="buttonOffClick('{{ item.hostname }}')" >OFF</button>
+                                                    </td>
                                                 {% else %}
                                                     <td><span class="label label-danger">{{ item.status }}</span></td>
+                                                    <td>
+                                                    <button id="{{ item.hostname }}on" type="button" class="btn btn-default btn-sm active" onclick="buttonOnClick('{{ item.hostname }}')" >ON</button>
+                                                    <button id="{{ item.hostname }}off" type="button" class="btn btn-default btn-sm disabled" onclick="buttonOffClick('{{ item.hostname }}')" >OFF</button>
+                                                    </td>
                                                 {% endif %}
-                                                <td>soon</td>
+
                                             </tr>
                                         {% endfor %}
 
@@ -161,8 +189,6 @@
     <!--  Notifications Plugin    -->
     <script src="/static/assets/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="/static/assets/js/light-bootstrap-dashboard.js"></script>
@@ -171,6 +197,57 @@
     <script src="/static/assets/js/demo.js"></script>
 
     <script>
+        var client = new Paho.MQTT.Client("sonata4.aws.atnog.av.it.pt", 8080, "dash");
+        client.onMessageArrived = onMessageArrived;
+        var options = {
+
+             //connection attempt timeout in seconds
+             timeout: 3,
+
+             //Gets Called if the connection has successfully been established
+             onSuccess: function () {
+                 console.log("onConnect");
+                client.subscribe("/refresh");
+             },
+
+             //Gets Called if the connection could not be established
+             onFailure: function (message) {
+                 alert("Connection failed: " + message.errorMessage);
+             }
+
+         };
+         function onMessageArrived(message) {
+              console.log("RELOAD");
+              location.reload();
+            }
+
+        //Attempt to connect
+        client.connect(options);
+
+
+
+        function buttonOnClick(host) {
+            var message = new Paho.MQTT.Message(host);
+            message.destinationName = "/signalOn";
+            message.qos = 1;
+            client.send(message);
+            document.getElementById(host+"on").classList.remove('active');
+            document.getElementById(host+"on").classList.add('disabled');
+
+        }
+        function buttonOffClick(host) {
+            var message = new Paho.MQTT.Message(host);
+            message.destinationName = "/signalOff";
+            message.qos = 1;
+            client.send(message);
+            document.getElementById(host+"off").classList.remove('active');
+            document.getElementById(host+"off").classList.add('disabled');
+
+
+        }
+        </script>
+
+    <!--<script>
         $( "#refresh" ).click(function() {
 
             $.ajax({
@@ -190,9 +267,9 @@
 
             setTimeout(function(){
                 location.reload();
-            }, 5000);
+            }, 10000);
 
         });
-    </script>
+    </script>-->
 
 </html>
