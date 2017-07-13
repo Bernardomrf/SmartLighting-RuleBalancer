@@ -20,6 +20,7 @@ gateway_devices = {} #Gateway - Num devices
 gateway_timestamp = {} #Gateways that are up
 on_gateways = [] # Online gateways
 rule_id_gateway = {} #Rule id -> Gateway
+sensors = ['motion', 'lux', 'hum', 'tmp']
 
 toggles=[]
 
@@ -29,10 +30,10 @@ test = {}
 def main():
 
     executer.submit(check_hb)
-    executer.submit(scotListener)
+    #executer.submit(scotListener)
     executer.submit(sendToggles)
     loader.process_rules()
-    subscribe.callback(on_message, ["/SM/out_events/#", "/SM/devconfig", "/SM/regdevice", "/SM/hb/", "/signalOn", "/signalOff"], qos=1, hostname="localhost", client_id="localBroker")
+    subscribe.callback(on_message, ["/SM/out_events/#", "/SM/devconfig", "/SM/regdevice", "/SM/hb/", "/signalOn", "/signalOff", "/SM/devices/#", "/SM/in_events/#"], qos=1, hostname="localhost", client_id="localBroker")
 
 
 def on_message(client, userdata, msg):
@@ -46,6 +47,7 @@ def process_message(client, userdata, msg):
     global device_topics
     global gateway_devices
     global toggles
+    global sensors
 
     if msg.topic == '/SM/devconfig':
         publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
@@ -65,6 +67,8 @@ def process_message(client, userdata, msg):
                 gateway_devices[gateways[message['device']][0]]-=1
                 ##Warn gateways
                 try:
+
+                    payload = topics_list[message['device']]
                     publish.single("/SM/add_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
@@ -105,10 +109,9 @@ def process_message(client, userdata, msg):
 
         message = json.loads(msg.payload.decode("utf-8"))
         device = msg.topic.replace("/SM/devices/", "")
+        topics_list[device] = []
 
-        if "motion" in device:
-            return
-        if "lux" in device:
+        if True in [ x in device for x in sensors]:
             return
 
         if message['operation']['metaData']['operation'] == "add_publish_topic":
@@ -120,51 +123,9 @@ def process_message(client, userdata, msg):
             topics = message['operation']['payloadData']['value'].split(';')
 
             for topic in topics:
-                topic = topic.replace("/#","/.*")
-
-                if topic in topics_list:
-                    if device in topics_list[topic][1]:
-                        continue
-
-                    topics_list[topic][1].append(device)
-
-                else:
-                    topics_list[topic] = (re.compile(topic),[device])
-
-    elif "/SM/out_events/" in msg.topic:
-
-        publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
-            hostname="sonata5.local", port=1883, client_id="", keepalive=60,
-            will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                topics_list[device].append(topic)
 
 
-        ##||||||||||DESCOMENTAR DPS|||||||||||
-        """for topic, regex in topics_list.items():
-            if regex[0].match(msg.topic):
-                for dev in regex[1]:
-                    publish.single(device_topics[dev], payload=msg.payload, qos=1, retain=False,
-                                hostname=""+gateways[dev][0]+".local", port=1883, client_id="", keepalive=60,
-                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)"""
-
-
-    elif "/SM/in_events/" in msg.topic:
-
-        ### THIS WIL PUBLISH ON SCOT ONLY LATER
-        send_gateways = []
-        for tpc in RuleLoader.regex_id:
-            regex = re.compile(tpc)
-
-            if re.match(regex, msg.topic):
-                for r_id in RuleLoader.regex_id[tpc]:
-
-                    send_gateways.append(rule_id_gateway[r_id])
-
-        send_gateways = set(send_gateways)
-
-        for host in send_gateways:
-            publish.single(msg.topic, payload=msg.payload, qos=1, retain=False,
-                        hostname=host, port=1883, client_id="", keepalive=60,
-                        will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
 
     elif "/SM/hb/" in msg.topic:
         global gateway_timestamp
@@ -204,7 +165,7 @@ def process_message(client, userdata, msg):
 
 
 def scotListener():
-    subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname=confs.SCOT_BROKER, client_id="scotBroker")
+    subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname="localhost", client_id="scotBroker")
 
 def check_hb():
 
@@ -348,8 +309,22 @@ def sendToggles():
 
 @atexit.register
 def goodbye():
-
-    print(gateway_devices)
+    #print('****************** topics_list ******************')
+    #print(topics_list) #All topics and their devices
+    #print('****************** gateways ******************')
+    #print(gateways) #Device - Gateway
+    print('****************** device_topics ******************')
+    print(device_topics) #Device - Topic
+    #print('****************** gateway_devices ******************')
+    #print(gateway_devices) #Gateway - Num devices
+    #print('****************** gateway_timestamp ******************')
+    #print(gateway_timestamp) #Gateways that are up
+    #print('****************** on_gateways ******************')
+    #print(on_gateways) # Online gateways
+    #print('****************** rule_id_gateway ******************')
+    #print(rule_id_gateway) #Rule id -> Gateway
+    #print('****************** regex_id ******************')
+    #print(RuleLoader.regex_id)
 
 if __name__ == '__main__':
     main()
