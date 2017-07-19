@@ -68,14 +68,17 @@ def process_message(client, userdata, msg):
                 ##Warn gateways
                 try:
 
-                    payload = json.dumps({message['device'] : topics_list[message['device']]})
+                    """payload = json.dumps({message['device'] : topics_list[message['device']]})"""
 
-                    publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
+                    """publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
-                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)"""
                     publish.single("/SM/delete_device", payload=message['device'], qos=1, retain=False,
                                 hostname=""+gateways[message['device']][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
+                    #Insert gateway in the preferencial position
+                    gateways[message['device']].insert(0,message['gateway'])
 
                     data['gateway'] = message['gateway']
                     data['name'] = message['device']
@@ -83,31 +86,26 @@ def process_message(client, userdata, msg):
 
                 except Exception as e:
                     print(e)
-                #Insert gateway in the preferencial position
-                gateways[message['device']].insert(0,message['gateway'])
+
 
             else:
 
                 gateways[message['device']].append(message['gateway'])
 
-                payload = json.dumps({message['device'] : topics_list[message['device']]})
+                """payload = json.dumps({message['device'] : topics_list[message['device']]})
 
                 publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
                                 hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
-                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)"""
 
         else:
+
             gateways[message['device']] = [message['gateway']]
 
             if message['gateway'] not in gateway_devices:
                 gateway_devices[message['gateway']]=0
 
             gateway_devices[message['gateway']]+=1
-
-            """payload = json.dumps({message['device'] : topics_list[message['device']]})
-            publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
-                                hostname=""+message['gateway']+".local", port=1883, client_id="", keepalive=60,
-                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)"""
 
             data['gateway'] = message['gateway']
             data['name'] = message['device']
@@ -121,6 +119,10 @@ def process_message(client, userdata, msg):
         topics_list[device] = []
 
         if True in [ x in device for x in sensors]:
+            payload = json.dumps({device : []})
+            publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
+                                hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
+                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
             return
 
         if message['operation']['metaData']['operation'] == "add_publish_topic":
@@ -135,6 +137,7 @@ def process_message(client, userdata, msg):
                 topics_list[device].append(topic)
 
             try:
+                print(len(topics_list[device]))
                 payload = json.dumps({device : topics_list[device]})
                 publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
                                 hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
@@ -203,28 +206,35 @@ def check_hb():
                 if time.time() - gateway_timestamp[gateway] > 10:
 
                     data['status'] = False
+                    try:
+                        if [item for item in on_gateways if item[0] == gateway]:
+                            rules_list = [item[1] for item in on_gateways if item[0] == gateway]
+                            [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
 
-                    if [item for item in on_gateways if item[0] == gateway]:
-                        rules_list = [item[1] for item in on_gateways if item[0] == gateway]
-                        [on_gateways.remove(item) for item in on_gateways if item[0] == gateway]
+                            remove_gateways(rules_list[0])
+                            ### APAGAR GATEWAY do rule_id_gateway
+                            ## DELEGATE GATEWAY DDEVICES TO OTHER GATEWAYS
+                            for device in gateways:
+                                try:
+                                    for i, gtws in enumerate(gateways[device]):
+                                    ## FEIO FEIO FEIO#########################################
+                                        if gtws + ".local" == gateway:
+                                            del gateways[device][i]
+                                            if i == 0:
 
-                        remove_gateways(rules_list[0])
-                        ### APAGAR GATEWAY do rule_id_gateway
-                        ## DELEGATE GATEWAY DDEVICES TO OTHER GATEWAYS
-                        for device in gateways:
-                            for i, gtws in enumerate(gateways[device]):
-                                ## FEIO FEIO FEIO#########################################
-                                if gtws + ".local" == gateway:
-                                    del gateways[device][i]
-                                    if i == 0:
+                                                payload = json.dumps({device : topics_list[device]})
+                                                publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
+                                                        hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
+                                                        will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+                                                gateway_devices[gateways[device][0]]+=1
+                                                gateway_devices[gtws]-=1
+                                except Exception as e:
+                                    print("Device has no Gateway connected")
 
-                                        payload = json.dumps({device : topics_list[device]})
-                                        publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
-                                                hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
-                                                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
-                                        gateway_devices[gateways[device][0]]+=1
-                                        gateway_devices[gtws]-=1
-                        refresh=True
+                            refresh=True
+                    except Exception as e:
+                        print(e)
+
 
                 data['hostname'] = re.sub('\.local$', '', gateway)
                 data['last_hb'] = str(datetime.fromtimestamp(gateway_timestamp[gateway]))
@@ -325,16 +335,18 @@ def sendToggles():
 
         time.sleep(5)
 
+
+
 @atexit.register
 def goodbye():
-    print('****************** topics_list ******************')
-    print(topics_list) #All topics and their devices
-    #print('****************** gateways ******************')
-    #print(gateways) #Device - Gateway
+    #print('****************** topics_list ******************')
+    #print(topics_list) #All topics and their devices
+    print('****************** gateways ******************')
+    print(gateways) #Device - Gateway
     #print('****************** device_topics ******************')
     #print(device_topics) #Device - Topic
-    #print('****************** gateway_devices ******************')
-    #print(gateway_devices) #Gateway - Num devices
+    print('****************** gateway_devices ******************')
+    print(gateway_devices) #Gateway - Num devices
     #print('****************** gateway_timestamp ******************')
     #print(gateway_timestamp) #Gateways that are up
     #print('****************** on_gateways ******************')
