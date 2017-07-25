@@ -1,6 +1,6 @@
 RULES_FOLDER = "json_rules/"
 RULES_FOLDER = "tests/"
-WORKERS = 8
+WORKERS = 9
 SCOT_BROKER = "sonata5.local"
 ADD_GTW_URL = 'http://sonata4.local/endpoints/gateway'
 ADD_RULE_URL = 'http://sonata4.local/endpoints/rule'

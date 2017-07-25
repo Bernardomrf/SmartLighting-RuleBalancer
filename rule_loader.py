@@ -13,6 +13,7 @@ class RuleLoader:
 
 
     regex_id = {}
+    target_rule_id = {}
     rules = {}
     count = 0
 
@@ -36,10 +37,17 @@ class RuleLoader:
             data={}
             RuleLoader.count += 1
             for action in subrule['actions']:
+                target = '/SM' + action['target']['topic']
+
+                if RuleLoader.count in RuleLoader.target_rule_id:
+                    RuleLoader.target_rule_id[RuleLoader.count].append(target)
+                else:
+                    RuleLoader.target_rule_id[RuleLoader.count] = [target]
+
 
                 if action['function']['name'] == 'set_value':
                     for listener in action['function']['listen_data']['listeners']:
-                        l = '/SM'+listener['topic'].replace("/+","/[^/]+")
+                        l = '/SM'+listener['topic']#.replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
                             if RuleLoader.count in RuleLoader.regex_id[l]:
                                 continue
@@ -49,7 +57,7 @@ class RuleLoader:
 
                 elif action['function']['name'] == 'setif_value_percent':
                     for listener in action['function']['listen_value']['listeners']:
-                        l = '/SM'+listener['topic'].replace("/+","/[^/]+")
+                        l = '/SM'+listener['topic']#.replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
                             if RuleLoader.count in RuleLoader.regex_id[l]:
                                 continue
@@ -58,7 +66,7 @@ class RuleLoader:
                             RuleLoader.regex_id[l] = [RuleLoader.count]
 
                     for listener in action['function']['listen_boolean']['listeners']:
-                        l = '/SM'+listener['topic'].replace("/+","/[^/]+")
+                        l = '/SM'+listener['topic']#.replace("/+","/[^/]+")
                         if l in RuleLoader.regex_id:
                             if RuleLoader.count in RuleLoader.regex_id[l]:
                                 continue

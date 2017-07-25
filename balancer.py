@@ -31,6 +31,7 @@ def main():
 
     executer.submit(check_hb)
     #executer.submit(scotListener)
+    executer.submit(updateGatewaysDB)
     executer.submit(sendToggles)
     loader.process_rules()
     subscribe.callback(on_message, ["/SM/out_events/#", "/SM/devconfig", "/SM/regdevice", "/SM/hb/", "/signalOn", "/signalOff", "/SM/devices/#", "/SM/in_events/#"], qos=1, hostname="localhost", client_id="localBroker")
@@ -184,10 +185,11 @@ def process_message(client, userdata, msg):
         toggles.append(msg.payload.decode("utf-8"))
 
 
-def scotListener():
-    subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname="localhost", client_id="scotBroker")
+#def scotListener():
+#    subscribe.callback(on_message, ["/SM/devices/#", "/SM/in_events/#"], qos=1, hostname="localhost", client_id="scotBroker")
 
 def check_hb():
+    #SO SO SORRY :´(
 
     global on_gateways
     global gateways
@@ -335,18 +337,98 @@ def sendToggles():
 
         time.sleep(5)
 
+def updateGatewaysDB():
+    while True:
+        try:
+
+            gw_in_events = {}
+            for regex in RuleLoader.regex_id:
+                gw_in_events[regex] = []
+                for gws in RuleLoader.regex_id[regex]:
+                    gw_in_events[regex].append(rule_id_gateway[gws])
+                gw_in_events[regex] = list(set(gw_in_events[regex]))
+
+            rules_per_devices = get_rules_per_devices()
+            output_topics_per_gw = get_output_topics_per_gw(rules_per_devices)
+
+            print(gw_in_events)
+            print(output_topics_per_gw)
+            ## SEND output_topics_per_gw AND gw_in_events
+
+            publish.single("/gateways/in_topics", payload=json.dumps(gw_in_events), qos=1, retain=False,
+                hostname="localhost", port=1883, client_id="", keepalive=60,
+                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+            publish.single("/gateways/out_topics", payload=json.dumps(output_topics_per_gw), qos=1, retain=False,
+                hostname="localhost", port=1883, client_id="", keepalive=60,
+                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
+        except Exception as e:
+            print(e)
+        time.sleep(30)
+
+
+
+
+def get_output_topics_per_gw(rules_per_devices):
+    output_topics_per_gw = {}
+
+    for rule, devices in rules_per_devices.items():
+        for device in devices:
+            if rule in output_topics_per_gw:
+                output_topics_per_gw[rule].append(gateways[device][0])
+            else:
+                output_topics_per_gw[rule] = [gateways[device][0]]
+        output_topics_per_gw[rule] = list(set(output_topics_per_gw[rule]))
+
+    return output_topics_per_gw
+
+
+def get_rules_per_devices():
+    rules_per_devices = {}
+
+    for k,v in device_topics.items():
+        for rule, topics in RuleLoader.target_rule_id.items():
+            for topic in topics:
+                if compare_topics(v, topic):
+                    if rule in rules_per_devices:
+                        rules_per_devices[rule].append(k)
+                    else:
+                        rules_per_devices[rule] = [k]
+                    break
+    return rules_per_devices
+
+
+
+def compare_topics(device_topic, rule_topic):
+
+    device_topic = device_topic.split('/')
+    rule_topic = rule_topic.split('/')
+
+    for i, txt in enumerate(rule_topic):
+        try:
+            if txt == 'all':
+                return True
+
+            elif txt != device_topic[i]:
+                return False
+
+        except Exception as e:
+            return True
+
+    return True
+
 
 
 @atexit.register
 def goodbye():
     #print('****************** topics_list ******************')
     #print(topics_list) #All topics and their devices
-    print('****************** gateways ******************')
-    print(gateways) #Device - Gateway
+    #print('****************** gateways ******************')
+    #print(gateways) #Device - Gateway
     #print('****************** device_topics ******************')
     #print(device_topics) #Device - Topic
-    print('****************** gateway_devices ******************')
-    print(gateway_devices) #Gateway - Num devices
+    #print('****************** gateway_devices ******************')
+    #print(gateway_devices) #Gateway - Num devices
     #print('****************** gateway_timestamp ******************')
     #print(gateway_timestamp) #Gateways that are up
     #print('****************** on_gateways ******************')
@@ -355,6 +437,11 @@ def goodbye():
     #print(rule_id_gateway) #Rule id -> Gateway
     #print('****************** regex_id ******************')
     #print(RuleLoader.regex_id)
+    #print('****************** target rule id ******************')
+    #print(RuleLoader.target_rule_id)
+    #updateGatewaysDB()
+
+    print('BYE')
 
 if __name__ == '__main__':
     main()
