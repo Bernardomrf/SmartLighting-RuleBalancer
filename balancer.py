@@ -120,13 +120,16 @@ def process_message(client, userdata, msg):
         topics_list[device] = []
 
         if True in [ x in device for x in sensors]:
-            payload = json.dumps({device : []})
-            publish.single("/SM/add_device", payload=payload, qos=1, retain=False,
+            if message['operation']['metaData']['operation'] == "add_publish_topic":
+                payload = json.dumps({device : message['operation']['payloadData']['value']})
+                publish.single("/SM/add_device_sensor", payload=payload, qos=1, retain=False,
                                 hostname=gateways[device][0]+".local", port=1883, client_id="", keepalive=60,
                                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+
             return
 
         if message['operation']['metaData']['operation'] == "add_publish_topic":
+
             topic = message['operation']['payloadData']['value'].replace("in_events","out_events")
             device_topics[device] = topic
             #print(device)
@@ -328,12 +331,17 @@ def sendToggles():
         global toggles
         #print(toggles)
         try:
-            for item in toggles:
+            """for item in toggles:
                 publish.single("/heart_beat", payload="", qos=1, retain=False,
                 hostname=str(item+".local"), port=1883, client_id="", keepalive=60,
+                will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)"""
+
+            publish.single("/heart_beat", payload="", qos=1, retain=False,
+                hostname=str("localhost"), port=1883, client_id="", keepalive=60,
                 will=None, auth=None, tls=None, protocol=mqtt.MQTTv311)
+            print("sending")
         except Exception as e:
-            raise e
+            print(e)
 
         time.sleep(5)
 
